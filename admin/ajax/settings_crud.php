@@ -26,13 +26,22 @@
     if (isset($_POST['upd_shutdown'])) {
         $frm_data = ($_POST['upd_shutdown'] == 0) ? 1 : 0;
     
-        // Giả định bạn có một biến $sr_no chứa giá trị cần thiết
-        $sr_no = 1; // Hoặc lấy giá trị này từ một nguồn khác
+        $sr_no = 1; 
     
         $q = "UPDATE `settings` SET `shutdown`=?, `site_about`=? WHERE `sr_no`=?";
-        $values = [$frm_data, 1, $sr_no]; // Thêm $sr_no vào mảng
-        $res = update($q, $values, "iii"); // Cập nhật kiểu tham số cho đúng
+        $values = [$frm_data, 1, $sr_no]; 
+        $res = update($q, $values, "iii"); 
         echo $res;
+    }
+
+    if(isset($_POST['get_contacts']))
+    {
+        $q = "SELECT * FROM `contact_details` WHERE  `sr_no`=?";
+        $values = [1];
+        $res = select($q,$values,"i");
+        $data = mysqli_fetch_assoc($res);
+        $json_data = json_encode($data);
+        echo $json_data;
     }
     
 ?>

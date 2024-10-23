@@ -1,30 +1,23 @@
 <?php
 
-// Hàm kiểm tra đăng nhập admin
-function adminLogin() {
-    // Khởi động phiên
-    session_start();
 
-    // Kiểm tra trạng thái đăng nhập
+function adminLogin()
+ {
+    session_start();
     if (!(isset($_SESSION['adminLogin']) && $_SESSION['adminLogin'] === true)) {
-        // Chuyển hướng đến trang đăng nhập nếu chưa đăng nhập
         echo "<script>
         window.location.href='index.php';
         </script>";
-        exit; // Dừng thực thi script sau khi chuyển hướng
+        exit;
     }
-
-    // Tái tạo ID phiên để tăng cường bảo mật
-    session_regenerate_id(true);
 }
 
-// Hàm chuyển hướng đến URL cụ thể
+
 function redirect($url) {
-    // Chuyển hướng đến URL
     echo "<script>
     window.location.href='$url';
     </script>";
-    exit; // Dừng thực thi script sau khi chuyển hướng
+    exit; 
 }
 
 // Hàm hiển thị thông báo

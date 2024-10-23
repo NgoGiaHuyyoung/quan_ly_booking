@@ -52,9 +52,9 @@
                     </a>
 
                     <h5 class="mt-4">Email</h5>
-                    <a href="mailto: ask.tjwebdev@gmail.com " class="d-inline-block mb-2 text-decoration-none text-dark">
+                    <a href="mailto: ask.Jaywebdev@gmail.com " class="d-inline-block mb-2 text-decoration-none text-dark">
                         <i class="bi bi-envelope-fill"></i>
-                        ask.tjwebdev@gmail.com
+                        ask.Jaywebdev@gmail.com
                     </a>
 
                     <h5 class="mt-4">Follow us us</h5>
