@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "e94da979-de45-4ba1-acfb-4b75ab858a1f",
+		"name": "Autotest_Login",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33369903"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains token\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"token\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Correct login message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"Login successful\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MTc2ZTI5MmU5ZmE0YzBkYjIyNDcwNiIsInJvbGUiOiJDdXN0b21lciIsImlhdCI6MTcyOTU5MDEzNywiZXhwIjoxNzI5NTkzNzM3fQ.al1pmxjYr4xBVgKMfT-L3oR46hFpI2jBQNP8SMzZk7A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"email\": \"ngogiahy3008@gmail.com\",\r\n  \"password\": \"Giahy@@3008\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Rooms",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MWNhNWMwZjc0ZTE0OWM1YTYxNTcwMCIsInJvbGUiOiJDdXN0b21lciIsImlhdCI6MTcyOTkzMTA1NCwiZXhwIjoxNzI5OTM0NjU0fQ.tgoLSZSvKbdn2hTx_GC8lstGew7FGr4etZS3Cm8qkRg",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Phòng Thông Minh\",\r\n  \"type\": \"Smart\",\r\n  \"price\": 180,\r\n  \"amenities\": [\"WiFi\",\"TV thông Minh\",\"Máy lạnh\",\"Hệ thống điều khiển thông minh\"],\r\n  \"quantity\": 5\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/rooms",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"rooms"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
