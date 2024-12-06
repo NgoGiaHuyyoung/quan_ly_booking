@@ -1,11 +1,11 @@
 import { body, validationResult } from 'express-validator';
-import User from '../models/User.js'; // Đảm bảo rằng bạn có .js ở cuối đường dẫn khi sử dụng ES Module
+import User from '../models/User.js'; 
 
-// Middleware kiểm tra email và phone đã tồn tại
+
 const checkUserExists = async (req, res, next) => {
   const { phone, email } = req.body;
 
-  // Kiểm tra email có tồn tại trong hệ thống không
+
   if (email) {
     const existingEmail = await User.findOne({ email });
     if (existingEmail) {
@@ -13,7 +13,7 @@ const checkUserExists = async (req, res, next) => {
     }
   }
 
-  // Kiểm tra số điện thoại có tồn tại trong hệ thống không
+
   if (phone) {
     const existingPhone = await User.findOne({ phone });
     if (existingPhone) {
@@ -24,7 +24,7 @@ const checkUserExists = async (req, res, next) => {
   next();
 };
 
-// Các quy tắc validate cho đăng ký
+
 export const validateRegistration = [
   body('phone')
     .isLength({ min: 10, max: 10 })
@@ -48,10 +48,10 @@ export const validateRegistration = [
     .withMessage('Mật khẩu phải chứa ít nhất một chữ số')
     .matches(/[@$!%*?&]/)
     .withMessage('Mật khẩu phải chứa ít nhất một ký tự đặc biệt (@$!%*?&)'),
-  checkUserExists, // Kiểm tra email và phone đã tồn tại
+  checkUserExists, 
 ];
 
-// Validate login
+
 export const validateLogin = [
   body('email')
     .isEmail()
@@ -61,7 +61,7 @@ export const validateLogin = [
     .withMessage('Mật khẩu không hợp lệ'),
 ];
 
-// Middleware để kiểm tra lỗi sau khi validate
+
 export const validate = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {

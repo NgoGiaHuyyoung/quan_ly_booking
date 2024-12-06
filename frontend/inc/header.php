@@ -41,30 +41,29 @@
         <form id="loginForm">
             <div class="modal-header">
                 <h5 class="modal-title d-flex align-items-center">
-                <i class="bi bi-person-circle fs-3 me-2"></i>User Login
+                    <i class="bi bi-person-circle fs-3 me-2"></i>User Login
                  </h5>
                 <button type="reset" class="btn-close shadow-none" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            <div class="mb-3">
-              <label class="form-label">Email address</label>
-              <input type="email" class="form-control" id="loginEmail" required>
-            </div>
-            <div class="mb-4">
-              <label class="form-label">Password</label>
-              <input type="password" class="form-control" id="loginPassword" required>
-            </div>
-            <div class="d-flex align-items-center justify-content-between mb-2">
-              <button type="submit" class="btn btn-dark">LOGIN</button>
-              <a href="javascript: void(0)" class="text-secondary text-decoration-none">Forgot Password?</a>
-            </div>
+              <div class="mb-3">
+                <label class="form-label">Email address</label>
+                <input type="email" class="form-control" id="loginEmail" required>
+              </div>
+              <div class="mb-4">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" id="loginPassword" required>
+              </div>
+              <div class="d-flex align-items-center justify-content-between mb-2">
+                <button type="submit" class="btn btn-dark">LOGIN</button>
+                <a href="javascript: void(0)" class="text-secondary text-decoration-none">Forgot Password?</a>
+              </div>
+              <div id="loginError" class="text-danger mt-2" style="display: none;">Invalid email or password.</div>
             </div>
         </form>
     </div>
   </div>
 </div>
-
-
 
 <!-- Modal Register -->
 <div class="modal fade" id="registerModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -109,8 +108,25 @@
           <div class="text-center my-1">
             <button type="submit" class="btn btn-dark">REGISTER</button>
           </div>
+          <div id="registerError" class="text-danger mt-2" style="display: none;">Passwords do not match.</div>
         </div>
       </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Logout -->
+<div class="modal fade" id="logoutModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logoutModalLabel">Welcome</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="userName">Welcome, user!</p>
+        <button id="logoutBtn" class="btn btn-dark">Logout</button>
+      </div>
     </div>
   </div>
 </div>

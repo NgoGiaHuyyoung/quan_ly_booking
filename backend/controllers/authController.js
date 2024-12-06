@@ -5,8 +5,9 @@ import nodemailer from 'nodemailer';
 import User from '../models/User.js';
 import logger from '../utils/logger.js';
 import VerificationCode from '../models/VerificationCode.js';
+import { sendVerificationEmail } from '../services/emailService.js';
 
-// Cấu hình Gmail
+
 const transporter = (() => {
   try {
     return nodemailer.createTransport({
@@ -22,7 +23,6 @@ const transporter = (() => {
   }
 })();
 
-// Hàm gửi email
 const sendEmail = async (to, subject, text) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,
@@ -40,18 +40,22 @@ const sendEmail = async (to, subject, text) => {
   }
 };
 
-// Hàm tạo access token và refresh token
 const generateTokens = (user) => {
-  const accessToken = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
-  const refreshToken = jwt.sign({ id: user._id }, process.env.JWT_REFRESH_SECRET, { expiresIn: '7d' });
-  return { accessToken, refreshToken };
+ const accessTokenPayload = {
+  id: user._id,
+  role: user.role,
+  email: user.email,  
+};
+const accessToken = jwt.sign(accessTokenPayload, process.env.JWT_SECRET, { expiresIn: '1h' });
+const refreshTokenPayload = { id: user._id };
+const refreshToken = jwt.sign(refreshTokenPayload, process.env.JWT_REFRESH_SECRET, { expiresIn: '7d' });
+return { accessToken, refreshToken };
 };
 
-// Đăng ký tài khoản mới
 export const register = async (req, res) => {
-  const { name, username, email, password, phone, role = 'customer' } = req.body;
+  const { name, username, email, password, phone } = req.body;
 
-  // Regex kiểm tra mật khẩu phải có ít nhất một ký tự viết hoa, một ký tự viết thường, một số và một ký tự đặc biệt
+
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
   if (!passwordRegex.test(password)) {
     return res.status(400).json({
@@ -61,6 +65,7 @@ export const register = async (req, res) => {
   }
 
   try {
+
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(409).json({
@@ -69,32 +74,34 @@ export const register = async (req, res) => {
       });
     }
 
-    // Hash mật khẩu nếu thỏa mãn yêu cầu
-    const hashedPassword = await bcrypt.hash(password, 10);
 
-    // Tạo mã xác thực email
-    const emailVerificationCode = crypto.randomBytes(6).toString('hex');  // Tạo mã xác thực ngắn gọn
+    const verificationToken = crypto.randomBytes(20).toString('hex');  
+
+ 
     const newUser = new User({
       name,
       username,
       email,
-      password,
+      password,  
       phone,
-      role,
-      isEmailVerified: false,
-      emailVerificationCode,  // Lưu mã xác thực
-      emailVerificationExpires: Date.now() + 3600000, // 1 giờ hết hạn
+      role: 'customer', 
+      verified: false,  
+      verificationToken,  
     });
 
+    
     await newUser.save();
 
-    // Gửi email với mã xác thực
-    const verificationLink = `http://localhost/hbwebsite/frontend/verify-email.php?email=${email}&code=${emailVerificationCode}`;
+  
+    const verificationLink = `http://localhost/hbwebsite/frontend/verify-email.php?email=${email}&token=${verificationToken}`;
+
+    
     await sendEmail(
       email,
       'Xác thực email đăng ký tài khoản',
-      `Vui lòng nhấp vào liên kết sau và nhập mã xác thực để kích hoạt tài khoản của bạn: ${verificationLink}`
+      `Vui lòng nhấp vào liên kết sau để kích hoạt tài khoản của bạn: ${verificationLink}`
     );
+
 
     res.status(201).json({
       success: true,
@@ -102,30 +109,73 @@ export const register = async (req, res) => {
     });
   } catch (error) {
     console.error('Error in registration:', error);
-    if (error.name === 'ValidationError') {
-      return res.status(400).json({
-        success: false,
-        message: error.message,
-      });
-    }
-
     res.status(500).json({
       success: false,
       message: 'Có lỗi xảy ra trong quá trình đăng ký.',
     });
   }
-};7
+};
 
-// Xác thực email
-export const verifyEmail = async (req, res) => {
-  const { email, code } = req.body;
-
+export const createAdmin = async (req, res) => {
   try {
-    // Kiểm tra người dùng với email và mã xác minh
-    const user = await User.findOne({
-      email: email.trim().toLowerCase(),
-      emailVerificationCode: code.trim(),
+    // Kiểm tra xem người dùng đã đăng nhập và có quyền admin hay không
+    const userRole = req.user?.role;  // Giả sử bạn đã xác thực người dùng và role lưu trong token
+
+    if (userRole !== 'admin') {
+      return res.status(403).json({ success: false, message: 'You do not have permission to create admin' });
+    }
+
+    const { username, email, password } = req.body;
+
+    // Kiểm tra xem email hoặc tên đăng nhập đã tồn tại chưa
+    const existingUser = await User.findOne({ $or: [{ email }, { username }] });
+    if (existingUser) {
+      return res.status(400).json({ success: false, message: 'Email or username already exists' });
+    }
+
+    // Mã hóa mật khẩu
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Tạo tài khoản admin mới với role là 'admin'
+    const newAdmin = new User({
+      username,
+      email,
+      password: hashedPassword,
+      role: 'admin', // Thiết lập role là 'admin' mặc định
     });
+
+    // Lưu tài khoản admin vào cơ sở dữ liệu
+    await newAdmin.save();
+
+    // Trả về phản hồi thành công
+    res.status(201).json({ success: true, message: 'Admin created successfully', user: newAdmin });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+};
+
+export const verifyEmail = async (req, res) => {
+  try {
+    const { email, token } = req.body;
+
+    // Kiểm tra email và mã xác thực có hợp lệ
+    if (!email || !token) {
+      return res.status(400).json({
+        success: false,
+        message: 'Email và mã xác thực là bắt buộc.',
+      });
+    }
+
+    const cleanedEmail = email.trim().toLowerCase();
+    const cleanedToken = token.trim();
+
+    // Tìm người dùng dựa trên email và mã xác thực
+    const user = await User.findOne({
+      email: cleanedEmail,
+      verificationToken: cleanedToken,
+    });
+
     if (!user) {
       return res.status(400).json({
         success: false,
@@ -133,37 +183,37 @@ export const verifyEmail = async (req, res) => {
       });
     }
 
-    // Kiểm tra thời hạn mã xác thực
-    if (user.emailVerificationExpires < Date.now()) {
+    // Kiểm tra mã xác thực có hết hạn không (nếu có logic cho việc hết hạn)
+    // (Nếu có trường `verificationTokenExpires`, bạn cần kiểm tra nó ở đây)
+    if (user.verificationTokenExpires && user.verificationTokenExpires < Date.now()) {
       return res.status(400).json({
         success: false,
         message: 'Mã xác thực đã hết hạn. Vui lòng yêu cầu mã mới.',
       });
     }
 
-    // Cập nhật trạng thái đã xác minh
-    user.isEmailVerified = true;
-    user.emailVerificationCode = undefined;
-    user.emailVerificationExpires = undefined;
+    // Cập nhật trạng thái xác thực email
+    user.verified = true;
+    user.verificationToken = null;  // Xóa mã xác thực sau khi đã xác thực
+    user.verificationTokenExpires = null;  // Nếu có trường hết hạn, xóa nó đi
 
+    // Lưu thay đổi vào cơ sở dữ liệu
     await user.save();
 
-    return res.status(200).json({
+    // Trả về phản hồi thành công
+    res.status(200).json({
       success: true,
       message: 'Email xác thực thành công.',
     });
-  } catch (err) {
-    console.error(err);
-    return res.status(500).json({
+  } catch (error) {
+    console.error('Error verifying email:', error);
+    res.status(500).json({
       success: false,
       message: 'Có lỗi xảy ra trong quá trình xác thực email.',
     });
   }
 };
 
-
-
-// Đăng nhập người dùng
 export const login = async (req, res) => {
   const { email, password } = req.body;
 
@@ -177,16 +227,25 @@ export const login = async (req, res) => {
       return res.status(401).json({ success: false, message: 'Thông tin đăng nhập không chính xác.' });
     }
 
-    if (!user.isEmailVerified) {
+    if (user.role !== 'customer') {
+      return res.status(403).json({ success: false, message: 'Bạn không có quyền truy cập với vai trò này.' });
+    }
+
+    if (!user.verified) {
       return res.status(401).json({ success: false, message: 'Tài khoản chưa được xác minh qua email.' });
     }
 
-    const passwordMatch = await bcrypt.compare(password, user.password);
-    if (!passwordMatch) {
-      return res.status(401).json({ success: false, message: 'Thông tin đăng nhập không chính xác.' });
-    }
+    // const isMatch = await bcrypt.compare(password, user.password);
+    // if (!isMatch) {
+    //   return res.status(401).json({ success: false, message: 'Thông tin đăng nhập không chính xác.' });
+    // }
 
     const { accessToken, refreshToken } = generateTokens(user);
+
+    user.accessToken = accessToken;
+    user.refreshToken = refreshToken;
+    await user.save();
+
     res.json({ success: true, accessToken, refreshToken });
   } catch (error) {
     console.error('Error during login:', error);
@@ -194,7 +253,76 @@ export const login = async (req, res) => {
   }
 };
 
-// Quên mật khẩu
+
+export const adminLogin = async (req, res) => {
+  const { email, password } = req.body;
+
+  // Kiểm tra thông tin đăng nhập
+  if (!email || !password) {
+    return res.status(400).json({ success: false, message: 'Vui lòng cung cấp email và mật khẩu.' });
+  }
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) {
+      return res.status(401).json({ success: false, message: 'Thông tin đăng nhập không chính xác.' });
+    }
+
+    if (!user.verified) {
+      return res.status(401).json({ success: false, message: 'Tài khoản chưa được xác minh qua email.' });
+    }
+
+    if (password !== user.password) {
+      return res.status(401).json({ success: false, message: 'Thông tin đăng nhập không chính xác.' });
+    }
+
+  // Kiểm tra nếu role không phải là admin hoặc staff
+  if (user.role !== 'admin' && user.role !== 'staff') {
+    return res.status(403).json({ success: false, message: 'Không có quyền truy cập.' });
+  }
+
+    // Tạo token khi đăng nhập thành công
+    const { accessToken, refreshToken } = generateTokens(user);
+
+    // Lưu lại token vào người dùng (nếu cần thiết)
+    user.accessToken = accessToken;
+    user.refreshToken = refreshToken;
+    await user.save();
+
+    // Trả token về client
+    res.json({ success: true, accessToken, refreshToken });
+  } catch (error) {
+    console.error('Error during admin login:', error);
+    res.status(500).json({ success: false, message: 'Có lỗi xảy ra!' });
+  }
+};
+
+export const logout = async (req, res) => {
+  const token = req.headers['authorization']?.split(' ')[1]; // Lấy token từ header Authorization
+
+  if (!token) {
+    return res.status(401).json({ success: false, message: 'Không có token, truy cập bị từ chối!' });
+  }
+
+  // Xác thực token
+  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+    if (err) {
+      return res.status(403).json({ success: false, message: 'Token không hợp lệ, vui lòng đăng nhập lại!' });
+    }
+
+    // Nếu token hợp lệ, thực hiện logout
+    // (Ví dụ: xóa session hoặc token khỏi client-side nếu cần thiết, vì server không lưu token)
+    // Thực tế, logout chỉ cần xóa token phía client (sessionStorage, localStorage, hoặc cookie)
+
+    // Bạn có thể thêm bước xóa session nếu sử dụng session hoặc cookie.
+    // Ví dụ: res.clearCookie('token'); nếu bạn lưu token trong cookie
+
+    return res.status(200).json({ success: true, message: 'Logout thành công!' });
+  });
+};
+
+
+
 export const forgotPassword = async (req, res) => {
   const { email } = req.body;
 
@@ -220,7 +348,6 @@ export const forgotPassword = async (req, res) => {
   }
 };
 
-// Khôi phục mật khẩu
 export const resetPassword = async (req, res) => {
   const { token } = req.params;
   const { newPassword } = req.body;
@@ -245,7 +372,6 @@ export const resetPassword = async (req, res) => {
   }
 };
 
-// Thay đổi mật khẩu
 export const changePassword = async (req, res) => {
   const { oldPassword, newPassword } = req.body;
   const userId = req.user.id;
@@ -266,8 +392,6 @@ export const changePassword = async (req, res) => {
   }
 };
 
-
-// Refresh token
 export const refreshToken = async (req, res) => {
   const { refreshToken } = req.body;
 
@@ -296,29 +420,71 @@ export const refreshToken = async (req, res) => {
 
 
 
-// Lấy danh sách nhân viên
-export const getStaff = async (req, res) => {
-  try {
-    const staff = await User.find({ role: 'staff' });
-    if (!staff || staff.length === 0) return res.status(404).json({ message: 'Không có nhân viên nào.' });
-    
-    res.status(200).json({ staff });
-  } catch (error) {
-    console.error('Error in getting staff:', error);
-    res.status(500).json({ message: 'Có lỗi xảy ra!' });
-  }
-};
 
-// Xác minh quyền quản trị viên
-export const verifyAdmin = async (req, res, next) => {
-  try {
-    const user = await User.findById(req.user.id);
-    if (!user || user.role !== 'admin') {
-      return res.status(403).json({ success: false, message: 'Bạn không có quyền truy cập.' });
-    }
-    next();
-  } catch (error) {
-    console.error('Error in verifying admin:', error);
-    res.status(500).json({ success: false, message: 'Có lỗi xảy ra!' });
-  }
-};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// export const login = async (req, res) => {
+//   const { email, password } = req.body;
+
+//   if (!email || !password) {
+//     return res.status(400).json({ success: false, message: 'Vui lòng cung cấp email và mật khẩu.' });
+//   }
+
+//   try {
+//     const user = await User.findOne({ email });
+//     if (!user) {
+//       return res.status(401).json({ success: false, message: 'Thông tin đăng nhập không chính xác.' });
+//     }
+
+//     if (!user.verified) {
+//       return res.status(401).json({ success: false, message: 'Tài khoản chưa được xác minh qua email.' });
+//     }
+
+//     // So sánh mật khẩu người dùng nhập trực tiếp với mật khẩu trong cơ sở dữ liệu
+//     if (password !== user.password) {
+//       return res.status(401).json({ success: false, message: 'Thông tin đăng nhập không chính xác.' });
+//     }
+
+//     const { accessToken, refreshToken } = generateTokens(user);
+
+//     // Cập nhật token trong cơ sở dữ liệu
+//     user.accessToken = accessToken;
+//     user.refreshToken = refreshToken;
+//     await user.save();
+
+//     res.json({ success: true, accessToken, refreshToken });
+//   } catch (error) {
+//     console.error('Error during login:', error);
+//     res.status(500).json({ success: false, message: 'Có lỗi xảy ra!' });
+//   }
+// };
+

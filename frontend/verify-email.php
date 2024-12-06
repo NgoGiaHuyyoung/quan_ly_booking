@@ -27,46 +27,49 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const verificationForm = document.getElementById('verificationForm');
-            verificationForm.addEventListener('submit', function (e) {
-                e.preventDefault();
-                const verificationCode = document.getElementById('verificationCode').value.trim();
+document.addEventListener('DOMContentLoaded', function () {
+    const verificationForm = document.getElementById('verificationForm');
+    verificationForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const verificationCode = document.getElementById('verificationCode').value.trim();
 
-                if (!verificationCode) {
-                    alert('Please enter the verification code.');
-                    return;
-                }
+        if (!verificationCode) {
+            alert('Please enter the verification code.');
+            return;
+        }
 
-                // Get email and verification code from URL parameters
-                const urlParams = new URLSearchParams(window.location.search);
-                const email = urlParams.get('email');
-                const code = urlParams.get('code');
+        // Get email and verification code from URL parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const email = urlParams.get('email');
+        const token = urlParams.get('token');  // Ensure you are passing the token as well
 
-                // Validate email and verification code
-                if (!email || !code) {
-                    alert('Invalid verification link. Please check your email.');
-                    return;
-                }
+        // Validate email and verification code
+        if (!email || !token) {
+            alert('Invalid verification link. Please check your email.');
+            return;
+        }
 
-                // Send verification data to backend
-                fetch('process-verification.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ email: email, code: verificationCode })
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) {
-                            alert('Email verified successfully!');
-                            window.location.href = 'login.php'; // Redirect to login page
-                        } else {
-                            alert(`Verification failed: ${data.message}`);
-                        }
-                    })
-                    .catch(error => console.error('Error:', error));
-            });
-        });
+        // Send verification data to backend
+        fetch('process-verification.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, token: token, code: verificationCode })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                alert('Email verified successfully!');
+
+                // Redirect to the index page with query string to show login modal
+                window.location.href = 'http://localhost/hbwebsite/frontend/index.php?showLoginModal=true';
+            } else {
+                alert(`Verification failed: ${data.message}`);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+});
+
     </script>
 </body>
 </html>

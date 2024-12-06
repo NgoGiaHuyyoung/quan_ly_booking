@@ -3,22 +3,30 @@ import {
   register,
   verifyEmail,
   login,
+  adminLogin,
   refreshToken,
   forgotPassword,
   resetPassword,
   changePassword,
-  getStaff,
+  logout,
+  createAdmin
 } from '../controllers/authController.js';
 import { verifyToken, verifyRole } from '../middlewares/auth.js';
 import { validateRegistration, validateLogin, validate } from '../middlewares/express-validator.js';
 import { body } from 'express-validator';
+import jwt from 'jsonwebtoken';
+
 
 const router = express.Router();
 
 
+router.post('/logout',verifyToken,logout)
 router.post('/register', validateRegistration, validate, register); 
+router.post('/create-admin', createAdmin,verifyRole); 
 router.post('/verifyEmail', verifyEmail);
-router.post('/login', validateLogin, validate, login); 
+// router.post('/login', validateLogin, validate, login); 
+router.post('/login',login);
+router.post('/admin-login', verifyRole(['admin']),adminLogin);
 router.post('/refresh-token', refreshToken); 
 router.post(
   '/forgot-password',
@@ -37,21 +45,13 @@ router.post(
   resetPassword
 ); 
 router.post('/change-password', verifyToken, validate, changePassword); 
-router.get('/staff', verifyToken, verifyRole(['admin']), getStaff);
-router.get('/admin-dashboard', verifyToken, verifyRole(['admin']), (req, res) => {
-  res.status(200).json({ message: 'Chào mừng admin!' });
-});
-
-router.get('/user/:id', verifyToken, (req, res) => {
-  if (req.user.role === 'customer') {
-    return res.status(403).json({ message: 'Khách hàng không có quyền truy cập vào tài nguyên này.' });
-  }
-  res.status(200).json(req.user);
-});
 
 
-router.get('/report', verifyToken, verifyRole(['admin', 'staff']), (req, res) => {
-  res.status(200).json({ message: 'Truy cập báo cáo thành công!' });
-});
+// router.get('/admin', verifyToken, verifyRole(['admin']), adminDashboard);
+// router.get('/staff', verifyToken, verifyRole(['staff', 'admin']), staffDashboard);
+// router.get('/user', verifyToken, verifyRole(['user', 'admin']), userDashboard);
+// router.get('/profile', verifyToken, verifyRole(['customer', 'admin']), getProfile);
+// router.get('/admin-dashboard', verifyToken, verifyRole(['admin']), getAdminDashboard);
+
 
 export default router;

@@ -1,17 +1,17 @@
 import bcrypt from 'bcrypt';
 import User from '../models/User.js';
-import Log from '../models/Log.js'; // Import model Log để ghi logs
+import Log from '../models/Log.js'; 
 
-// Lấy tất cả người dùng
+
 export const getAllUsers = async (req, res) => {
   try {
-    const users = await User.find().select('-password'); // Ẩn mật khẩu khi trả về
+    const users = await User.find().select('-password'); 
     res.status(200).json(users);
 
-    // Ghi log hành động lấy danh sách người dùng
+  
     await Log.create({
       action: 'GET_ALL_USERS',
-      user: req.user.id, // ID người thực hiện hành động
+      user: req.user.id, 
       timestamp: new Date(),
     });
   } catch (error) {
@@ -19,17 +19,17 @@ export const getAllUsers = async (req, res) => {
   }
 };
 
-// Lấy thông tin người dùng theo ID
+
 export const getUserById = async (req, res) => {
   const userId = req.params.id;
   try {
-    const user = await User.findById(userId).select('-password'); // Ẩn mật khẩu khi trả về
+    const user = await User.findById(userId).select('-password'); 
     if (!user) {
       return res.status(404).json({ message: 'Người dùng không tìm thấy.' });
     }
     res.status(200).json(user);
 
-    // Ghi log hành động lấy thông tin người dùng
+    
     await Log.create({
       action: 'GET_USER_BY_ID',
       user: req.user.id,
@@ -40,7 +40,7 @@ export const getUserById = async (req, res) => {
   }
 };
 
-// Tạo người dùng mới
+
 export const createUser = async (req, res) => {
   const { name, username, password, phone, email, role } = req.body;
   try {
@@ -55,7 +55,7 @@ export const createUser = async (req, res) => {
     await newUser.save();
     res.status(201).json({ message: 'Người dùng đã được tạo thành công.', user: newUser });
 
-    // Ghi log hành động tạo người dùng mới
+    
     await Log.create({
       action: 'CREATE_USER',
       user: req.user.id,
@@ -66,7 +66,6 @@ export const createUser = async (req, res) => {
   }
 };
 
-// Cập nhật thông tin người dùng
 export const updateUser = async (req, res) => {
   const userId = req.params.id;
   const { password, ...updateFields } = req.body;
@@ -94,7 +93,6 @@ export const updateUser = async (req, res) => {
     const updatedUser = await User.findByIdAndUpdate(userId, updateFields, { new: true }).select('-password');
     res.status(200).json({ message: 'Người dùng đã được cập nhật thành công.', user: updatedUser });
 
-    // Ghi log hành động cập nhật người dùng
     await Log.create({
       action: 'UPDATE_USER',
       user: req.user.id,
@@ -105,7 +103,6 @@ export const updateUser = async (req, res) => {
   }
 };
 
-// Xóa người dùng
 export const deleteUser = async (req, res) => {
   const userId = req.params.id;
   try {
@@ -115,7 +112,7 @@ export const deleteUser = async (req, res) => {
     }
     res.status(200).json({ message: 'Người dùng đã được xóa.' });
 
-    // Ghi log hành động xóa người dùng
+    
     await Log.create({
       action: 'DELETE_USER',
       user: req.user.id,
@@ -126,7 +123,7 @@ export const deleteUser = async (req, res) => {
   }
 };
 
-// Đổi mật khẩu của người dùng
+
 export const changePassword = async (req, res) => {
   const { userId, oldPassword, newPassword } = req.body;
 
@@ -147,7 +144,6 @@ export const changePassword = async (req, res) => {
     await user.save();
     res.status(200).json({ message: 'Mật khẩu đã được cập nhật thành công.' });
 
-    // Ghi log hành động đổi mật khẩu người dùng
     await Log.create({
       action: 'CHANGE_PASSWORD',
       user: req.user.id,

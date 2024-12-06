@@ -28,8 +28,6 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       minlength: 8,
-      maxlength: 30,
-      match: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,30}$/,
     },
     phone: {
       type: String,
@@ -67,17 +65,19 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: null,
     },
+    accessToken: String,  
+    refreshToken: String,
   },
   { timestamps: true } // Tự động tạo createdAt và updatedAt
 );
 
 // Middleware mã hóa mật khẩu trước khi lưu hoặc cập nhật
-userSchema.pre('save', async function (next) {
-  if (this.isModified('password')) {
-    this.password = await bcrypt.hash(this.password, 10);
-  }
-  next();
-});
+// userSchema.pre('save', async function (next) {
+//   if (this.isModified('password')) {
+//     this.password = await bcrypt.hash(this.password, 10);
+//   }
+//   next();
+// });
 
 // Hàm so sánh mật khẩu khi đăng nhập
 userSchema.methods.comparePassword = async function (candidatePassword) {

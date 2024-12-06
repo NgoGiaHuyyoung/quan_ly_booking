@@ -1,3 +1,8 @@
+<?php
+// Kiểm tra nếu có tham số showLoginModal trong URL
+$showLoginModal = isset($_GET['showLoginModal']) && $_GET['showLoginModal'] === 'true';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -505,7 +510,97 @@
     document.getElementById('closeRegisterModal').addEventListener('click', function() {
         document.getElementById('registerModal').style.display = 'none';
     });
+     // Mở modal logout
+     document.getElementById('openLogoutModal').addEventListener('click', function() {
+        document.getElementById('logoutModal').style.display = 'block';
+    });
+
+    // Đóng modal logout khi nhấn vào dấu "x"
+    document.getElementById('closeLogoutModal').addEventListener('click', function() {
+        document.getElementById('logoutModal').style.display = 'none';
+    });
+
+    // Đóng modal logout khi nhấn vào nút Cancel
+    document.getElementById('cancelLogout').addEventListener('click', function() {
+        document.getElementById('logoutModal').style.display = 'none';
+    });
+
+    // Xác nhận đăng xuất và thực hiện thao tác logout
+    document.getElementById('confirmLogout').addEventListener('click', function() {
+        // Thực hiện logout ở đây, ví dụ như xóa token, redirect...
+        alert('You have logged out.');
+        document.getElementById('logoutModal').style.display = 'none';
+    });
 </script>
+
+
+<!-- <script>
+    window.addEventListener('DOMContentLoaded', function () {
+      
+        const user = sessionStorage.getItem('user');
+        const loginModal = new bootstrap.Modal(document.getElementById('loginModal'));
+        const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
+        const logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
+
+        if (user) {
+            
+            loginModal.hide();
+            registerModal.hide();
+            logoutModal.show();
+        } else {
+       
+            loginModal.show();
+            registerModal.show();
+        }
+    });
+</script> -->
+
+<!-- <script>
+  // Lắng nghe sự kiện khi người dùng đăng nhập thành công
+  document.getElementById("loginForm").addEventListener("submit", function(e) {
+    e.preventDefault();  // Ngừng sự kiện mặc định của form
+    
+    // Giả sử người dùng đăng nhập thành công, chúng ta sẽ ẩn modal login và register
+    $('#loginModal').modal('hide');
+    $('#registerModal').modal('hide');
+    
+    // Hiển thị modal logout
+    $('#logoutModal').modal('show');
+    
+    // Hiển thị alert thông báo login success
+    alert("Login success!");
+
+    // Lưu thông tin người dùng vào sessionStorage
+    const userData = { username: "exampleUser", email: "example@example.com" }; // Ví dụ thông tin người dùng
+    sessionStorage.setItem('user', JSON.stringify(userData));  // Lưu vào sessionStorage
+  });
+
+  // Lắng nghe sự kiện khi người dùng đăng ký thành công
+  document.getElementById("registerForm").addEventListener("submit", function(e) {
+    e.preventDefault();  // Ngừng sự kiện mặc định của form
+    
+    // Giả sử người dùng đăng ký thành công, chúng ta sẽ ẩn modal login và register
+    $('#loginModal').modal('hide');
+    $('#registerModal').modal('hide');
+    
+    // Hiển thị modal logout
+    $('#logoutModal').modal('show');
+  });
+
+  // Lắng nghe sự kiện khi người dùng nhấn nút logout
+  document.getElementById("logoutBtn").addEventListener("click", function() {
+    // Xóa thông tin người dùng khỏi sessionStorage
+    sessionStorage.removeItem('user');
+    
+    // Ẩn modal logout
+    $('#logoutModal').modal('hide');
+    
+    // Hiển thị lại modal login và register
+    $('#loginModal').modal('show');
+    $('#registerModal').modal('show');
+  });
+</script> -->
+
 </body>
 
 </html>

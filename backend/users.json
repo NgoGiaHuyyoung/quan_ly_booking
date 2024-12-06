@@ -1,0 +1,85 @@
+[
+  {
+    "name": "Ngo Gia Huy",
+    "username": "GiaHuy2001",
+    "password": "Ngogiahuy3008@@",
+    "phone": "0123456789",
+    "email": "ngogiahuy3003@gmail.com",
+    "role":  "customer"
+  },
+  {
+    "name": "Tran Van An",
+    "username": "AnTran01",
+    "password": "Antran2023@@",
+    "phone": "0987654321",
+    "email": "tranvanan@gmail.com",
+    "role":  "customer"
+  },
+  {
+    "name": "Le Thi Bao",	
+    "username": "BaoLe2023",
+    "password": "BaoLe@1234",
+    "phone": "0975321486",
+    "email": "letbao2023@gmail.com",
+    "role": "customer"
+  },
+  {
+    "name": "Phan Thi Cuc",
+    "username": "CucPhan02",
+    "password": "Cucphan@2023",
+    "phone": "0901234567",
+    "email": "phanthicuc@gmail.com",
+    "role":  "customer"
+  },
+  {
+    "name": "Vo Hong Duc",
+    "username": "DucVo2021",
+    "password": "VoHongDuc@01",
+    "phone": "0912345678",
+    "email": "vohongduc@gmail.com",
+    "role":  "customer"
+  },
+  {
+    "name": "Nguyen Minh Tam",
+    "username": "TamNguyenMinh",
+    "password": "Tamnguyen@@2023",
+    "phone": "0921345678",
+    "email": "nguyenminhtam@gmail.com",
+    "role": "customer"
+  },
+  {
+    "name": "Pham Quang Vinh",
+    "username": "VinhPham99",
+    "password": "Phamquang@vinh99",
+    "phone": "0932145678",
+    "email": "phamquangvinh@gmail.com",
+    "role":  "customer"
+  },
+  {
+    "name": "Doan Hong Nhung",
+    "username": "NhungDoan98",
+    "password": "Nhungdoan@@1998",
+    "phone": "0943214567",
+    "email": "doanhongnhung@gmail.com",
+    "role":  "customer"
+  },
+  {
+    "name": "Hoang Quoc Tuan",
+    "username": "TuanHoang88",
+    "password": "Hoangtuan@2022",
+    "phone": "0954321678",
+    "email": "hoangquoctuan@gmail.com",
+    "role": "admin"
+  },
+  {
+    "name": "Nguyen Van Nam",
+    "username": "NamNguyen2023",
+    "password": "Nguyenvan@nam2023",
+    "phone": "0965432178",
+    "email": "nguyenvannam@gmail.com",
+    "role": "customer"
+  }
+]
+
+
+

@@ -2,17 +2,23 @@
 // Xác nhận mã xác minh từ yêu cầu POST
 $data = json_decode(file_get_contents('php://input'), true);
 
-// Kiểm tra mã xác minh
-if (!isset($data['code']) || empty($data['code'])) {
-    echo json_encode(['success' => false, 'message' => 'Verification code is required.']);
+// Kiểm tra thông tin yêu cầu
+if (!isset($data['email']) || empty($data['email']) || !isset($data['token']) || empty($data['token']) || !isset($data['code']) || empty($data['code'])) {
+    echo json_encode(['success' => false, 'message' => 'Email, verification token, and verification code are required.']);
     exit;
 }
 
+$email = $data['email'];
+$token = $data['token'];
 $verificationCode = $data['code'];
 
 // Gửi yêu cầu đến API backend để xử lý mã xác minh
 $apiUrl = 'http://localhost:5000/api/auth/verifyEmail'; // Đường dẫn API
-$payload = json_encode(['code' => $verificationCode]);
+$payload = json_encode([
+    'email' => $email,
+    'token' => $token,
+    'code' => $verificationCode
+]);
 
 $ch = curl_init($apiUrl);
 curl_setopt($ch, CURLOPT_POST, true);

@@ -1,0 +1,92 @@
+{
+	"info": {
+		"_postman_id": "e94da979-de45-4ba1-acfb-4b75ab858a1f",
+		"name": "Autotest_Register",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33369903"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201); \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains user ID\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"userId\"); \r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response contains success message\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql(\"User registered successfully\"); \r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"// Pre-request script để lấy thông tin người dùng từ data file\r",
+							"pm.environment.set(\"name\", pm.iterationData.get(\"name\"));\r",
+							"pm.environment.set(\"username\", pm.iterationData.get(\"username\"));\r",
+							"pm.environment.set(\"password\", pm.iterationData.get(\"password\"));\r",
+							"pm.environment.set(\"phone\", pm.iterationData.get(\"phone\"));\r",
+							"pm.environment.set(\"email\", pm.iterationData.get(\"email\"));\r",
+							"pm.environment.set(\"role\", pm.iterationData.get(\"role\"));\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3MTc2ZTI5MmU5ZmE0YzBkYjIyNDcwNiIsInJvbGUiOiJDdXN0b21lciIsImlhdCI6MTcyOTU5MDEzNywiZXhwIjoxNzI5NTkzNzM3fQ.al1pmxjYr4xBVgKMfT-L3oR46hFpI2jBQNP8SMzZk7A",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"{{name}}\",\r\n  \"username\": \"{{username}}\",\r\n  \"password\": \"{{password}}\",\r\n  \"phone\": \"{{phone}}\",\r\n  \"email\": \"{{email}}\",\r\n  \"role\": \"{{role}}\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,8 @@
+{
+  "email": "admin@example.com",
+  "password": "Ngogiahuy3008@@"
+},
+{
+  "email": "ngogiahuy.utc2@gmail.com",
+  "password": "Ngogiahuy3008@@"
+}
