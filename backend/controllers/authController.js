@@ -310,12 +310,11 @@ export const logout = async (req, res) => {
       return res.status(403).json({ success: false, message: 'Token không hợp lệ, vui lòng đăng nhập lại!' });
     }
 
-    // Nếu token hợp lệ, thực hiện logout
-    // (Ví dụ: xóa session hoặc token khỏi client-side nếu cần thiết, vì server không lưu token)
-    // Thực tế, logout chỉ cần xóa token phía client (sessionStorage, localStorage, hoặc cookie)
-
-    // Bạn có thể thêm bước xóa session nếu sử dụng session hoặc cookie.
-    // Ví dụ: res.clearCookie('token'); nếu bạn lưu token trong cookie
+    // Token hợp lệ, thực hiện logout
+    // Xóa token ở phía client (ví dụ: xóa cookie hoặc localStorage)
+    res.clearCookie('token');  // Xóa token trong cookie nếu bạn lưu trong cookie
+    // Hoặc bạn có thể sử dụng sessionStorage, localStorage nếu token lưu ở đó
+    // res.clearCookie('token', { path: '/', httpOnly: true }); nếu cookie lưu với các thuộc tính bảo mật
 
     return res.status(200).json({ success: true, message: 'Logout thành công!' });
   });
@@ -487,4 +486,3 @@ export const refreshToken = async (req, res) => {
 //     res.status(500).json({ success: false, message: 'Có lỗi xảy ra!' });
 //   }
 // };
-

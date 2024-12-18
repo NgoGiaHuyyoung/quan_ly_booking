@@ -1,3 +1,9 @@
+<?php
+// Kiểm tra nếu có tham số showLoginModal trong URL
+$showLoginModal = isset($_GET['showLoginModal']) && $_GET['showLoginModal'] === 'true';
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,6 +105,52 @@
         <?php require('inc/footer.php') ?>
 
 
+        <!-- Liên kết đến file JavaScript -->
+<script src="admin/js/login-register.js"></script>
+
+<!-- Thêm một số JavaScript cho modal -->
+<script>
+    // Mở modal login
+    document.getElementById('openLoginModal').addEventListener('click', function() {
+        document.getElementById('loginModal').style.display = 'block';
+    });
+
+    // Mở modal register
+    document.getElementById('openRegisterModal').addEventListener('click', function() {
+        document.getElementById('registerModal').style.display = 'block';
+    });
+
+    // Đóng modal login
+    document.getElementById('closeLoginModal').addEventListener('click', function() {
+        document.getElementById('loginModal').style.display = 'none';
+    });
+
+    // Đóng modal register
+    document.getElementById('closeRegisterModal').addEventListener('click', function() {
+        document.getElementById('registerModal').style.display = 'none';
+    });
+
+    // Mở modal logout
+    document.getElementById('openLogoutModal').addEventListener('click', function() {
+        document.getElementById('logoutModal').style.display = 'block';
+    });
+
+    // Đóng modal logout khi nhấn vào dấu "x"
+    document.getElementById('closeLogoutModal').addEventListener('click', function() {
+        document.getElementById('logoutModal').style.display = 'none';
+    });
+
+    // Đóng modal logout khi nhấn vào nút Cancel
+    document.getElementById('cancelLogout').addEventListener('click', function() {
+        document.getElementById('logoutModal').style.display = 'none';
+    });
+
+    // Xác nhận đăng xuất và thực hiện thao tác logout
+    document.getElementById('confirmLogout').addEventListener('click', function() {
+        alert('You have logged out.');
+        document.getElementById('logoutModal').style.display = 'none';
+    });
+</script>
 
 
 </body>

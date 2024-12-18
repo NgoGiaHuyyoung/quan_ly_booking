@@ -489,49 +489,60 @@ $showLoginModal = isset($_GET['showLoginModal']) && $_GET['showLoginModal'] === 
   <!-- Liên kết đến file JavaScript -->
 <script src="admin/js/login-register.js"></script>
 
-<!-- Thêm một số JavaScript cho modal -->
 <script>
+// Helper function để gắn sự kiện một cách an toàn
+function addEventListenerSafe(selector, event, callback) {
+    const element = document.getElementById(selector);
+    if (element) {
+        element.addEventListener(event, callback);
+    }
+}
+
+// Chờ DOM được tải hoàn toàn trước khi chạy script
+document.addEventListener('DOMContentLoaded', function() {
     // Mở modal login
-    document.getElementById('openLoginModal').addEventListener('click', function() {
+    addEventListenerSafe('openLoginModal', 'click', function() {
         document.getElementById('loginModal').style.display = 'block';
     });
 
     // Mở modal register
-    document.getElementById('openRegisterModal').addEventListener('click', function() {
+    addEventListenerSafe('openRegisterModal', 'click', function() {
         document.getElementById('registerModal').style.display = 'block';
     });
 
     // Đóng modal login
-    document.getElementById('closeLoginModal').addEventListener('click', function() {
+    addEventListenerSafe('closeLoginModal', 'click', function() {
         document.getElementById('loginModal').style.display = 'none';
     });
 
     // Đóng modal register
-    document.getElementById('closeRegisterModal').addEventListener('click', function() {
+    addEventListenerSafe('closeRegisterModal', 'click', function() {
         document.getElementById('registerModal').style.display = 'none';
     });
-     // Mở modal logout
-     document.getElementById('openLogoutModal').addEventListener('click', function() {
+
+    // Mở modal logout
+    addEventListenerSafe('openLogoutModal', 'click', function() {
         document.getElementById('logoutModal').style.display = 'block';
     });
 
     // Đóng modal logout khi nhấn vào dấu "x"
-    document.getElementById('closeLogoutModal').addEventListener('click', function() {
+    addEventListenerSafe('closeLogoutModal', 'click', function() {
         document.getElementById('logoutModal').style.display = 'none';
     });
 
     // Đóng modal logout khi nhấn vào nút Cancel
-    document.getElementById('cancelLogout').addEventListener('click', function() {
+    addEventListenerSafe('cancelLogout', 'click', function() {
         document.getElementById('logoutModal').style.display = 'none';
     });
 
     // Xác nhận đăng xuất và thực hiện thao tác logout
-    document.getElementById('confirmLogout').addEventListener('click', function() {
-        // Thực hiện logout ở đây, ví dụ như xóa token, redirect...
+    addEventListenerSafe('confirmLogout', 'click', function() {
         alert('You have logged out.');
         document.getElementById('logoutModal').style.display = 'none';
     });
+});
 </script>
+
 
 
 <!-- <script>

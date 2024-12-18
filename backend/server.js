@@ -13,25 +13,46 @@ import billingRoutes from './routes/billingRoutes.js';
 import reviewRoutes from './routes/reviewRoutes.js';
 import settingRoutes from './routes/settingRoutes.js';
 import logRoutes from './routes/logRoutes.js';
+import path from 'path'; // Thêm module path
+import fs from 'fs'; // Thêm module fs
+import { fileURLToPath } from 'url'; // Thêm fileURLToPath để lấy __dirname
 
 dotenv.config();
 
-const app = express();
+const app = express(); // Khởi tạo express app
 
-// Middleware to parse JSON body
-app.use(express.json());
+// Kết nối đến database
+connectDB();
 
-// CORS Configuration
+// Middleware CORS
 const corsOptions = {
-  origin: 'http://localhost', // Đặt nguồn cho phép kết nối
-  methods: ['GET', 'POST', 'PUT', 'DELETE'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
+  origin: (origin, callback) => {
+    const allowedOrigins = [
+      'http://localhost/hbwebsite/frontend', 
+      'http://localhost',   
+      'http://localhost:5000'
+    ]; // Danh sách các origin được phép
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Cho phép các phương thức HTTP
+  allowedHeaders: ['Content-Type', 'Authorization'], // Các header được phép
   credentials: true, // Cho phép gửi cookie
 };
 app.use(cors(corsOptions));
 
-// Kết nối đến database
-connectDB();
+// Middleware xử lý JSON và URL-encoded
+app.use(express.json({ limit: '50mb' })); // Tăng giới hạn kích thước yêu cầu lên 50MB
+app.use(express.urlencoded({ limit: '50mb', extended: true })); // Tăng giới hạn kích thước URL encoded
+
+// Lấy __dirname trong ES Modules
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// Cấu hình để Express phục vụ ảnh từ thư mục uploads
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Cài đặt routes
 app.use('/api/auth', authRoutes);
@@ -62,6 +83,6 @@ app.use((error, req, res, next) => {
 
 // Khởi động server
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {  
+app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

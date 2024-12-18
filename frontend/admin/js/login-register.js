@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const registerLink = document.getElementById('registerLink');
     const logoutLink = document.getElementById('logoutLink');
 
-    // Hàm cập nhật các nút trên header
+    // Hàm cập nhật hiển thị nút trong header
     function updateHeaderButtons() {
-        const token = sessionStorage.getItem('token');
-        if (token) {
+        const accessToken = sessionStorage.getItem('accessToken'); // Lấy accessToken từ sessionStorage
+        if (accessToken) {
             loginLink.style.display = 'none';
             registerLink.style.display = 'none';
             logoutLink.style.display = 'block';
@@ -22,15 +22,14 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    // Gọi hàm cập nhật ngay khi trang tải
+    // Cập nhật ngay khi tải trang
     updateHeaderButtons();
 
-    // Xử lý đăng nhập
+    // Xử lý sự kiện đăng nhập
     const loginForm = document.getElementById('loginForm');
     if (loginForm) {
-        loginForm.addEventListener('submit', function (e) {
+        loginForm.addEventListener('submit', async function (e) {
             e.preventDefault();
-
             const email = document.getElementById('loginEmail')?.value.trim();
             const password = document.getElementById('loginPassword')?.value.trim();
 
@@ -39,44 +38,43 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            fetch('http://localhost:5000/api/auth/login', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ email, password })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Login successful');
-                        sessionStorage.setItem('token', data.token);
-                        sessionStorage.setItem('user', JSON.stringify(data.user));
-                        loginModal.hide();
-                        registerModal.hide();
-                        updateHeaderButtons();
-                    } else {
-                        alert(`Login failed: ${data.message}`);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('An error occurred. Please try again.');
+            try {
+                const response = await fetch('http://localhost:5000/api/auth/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
                 });
+                const data = await response.json();
+
+                if (data.success) {
+                    alert('Login successful!');
+                    // Lưu accessToken và refreshToken vào sessionStorage
+                    sessionStorage.setItem('accessToken', data.accessToken);
+                    sessionStorage.setItem('refreshToken', data.refreshToken);
+                    sessionStorage.setItem('user', JSON.stringify(data.user));
+                    loginModal.hide();
+                    updateHeaderButtons(); // Cập nhật lại nút hiển thị trong header sau khi đăng nhập
+                } else {
+                    alert(`Login failed: ${data.message}`);
+                }
+            } catch (error) {
+                console.error('Login error:', error);
+                alert('An error occurred. Please try again.');
+            }
         });
     }
 
-    // Xử lý đăng ký
+    // Xử lý sự kiện đăng ký
     const registerForm = document.getElementById('registerForm');
     if (registerForm) {
-        registerForm.addEventListener('submit', function (e) {
+        registerForm.addEventListener('submit', async function (e) {
             e.preventDefault();
-
             const name = document.getElementById('registerName')?.value.trim();
             const username = document.getElementById('registerUsername')?.value.trim();
             const email = document.getElementById('registerEmail')?.value.trim();
             const phone = document.getElementById('registerPhone')?.value.trim();
             const password = document.getElementById('registerPassword')?.value.trim();
             const confirmPassword = document.getElementById('registerConfirmPassword')?.value.trim();
-            const role = "customer";
 
             if (!name || !username || !email || !phone || !password || !confirmPassword) {
                 alert('Please fill in all fields.');
@@ -88,24 +86,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
-            fetch('http://localhost:5000/api/auth/register', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ name, username, email, phone, password, role })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        alert('Registration successful. Please check your email for verification.');
-                        registerModal.hide();
-                    } else {
-                        alert(`Registration failed: ${data.message}`);
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    alert('An error occurred during registration. Please try again.');
+            try {
+                const response = await fetch('http://localhost:5000/api/auth/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, username, email, phone, password, role: 'customer' })
                 });
+                const data = await response.json();
+
+                if (data.success) {
+                    alert('Registration successful! Please verify your email.');
+                    registerModal.hide();
+                } else {
+                    alert(`Registration failed: ${data.message}`);
+                }
+            } catch (error) {
+                console.error('Registration error:', error);
+                alert('An error occurred during registration. Please try again.');
+            }
         });
     }
 
@@ -113,9 +111,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const logoutBtn = document.getElementById('logoutBtn');
     if (logoutBtn) {
         logoutBtn.addEventListener('click', function () {
-            const token = sessionStorage.getItem('token');
+            const accessToken = sessionStorage.getItem('accessToken');
 
-            if (!token) {
+            if (!accessToken) {
                 alert('No token found. You are not logged in.');
                 return;
             }
@@ -124,16 +122,18 @@ document.addEventListener('DOMContentLoaded', function () {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`
+                    'Authorization': `Bearer ${accessToken}`
                 }
             })
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
                         alert('Logout successful');
-                        sessionStorage.removeItem('token');
+                        // Xóa accessToken và refreshToken
+                        sessionStorage.removeItem('accessToken');
+                        sessionStorage.removeItem('refreshToken');
                         sessionStorage.removeItem('user');
-                        updateHeaderButtons();
+                        updateHeaderButtons(); // Cập nhật lại nút hiển thị trong header sau khi đăng xuất
                     } else {
                         alert('Logout failed: ' + data.message);
                     }

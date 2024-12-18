@@ -49,7 +49,16 @@ function uploadImage($image,$folder)
         return 'inv_size';
     }
     else{
-        $ext = pathinfo($image['name'],PATHINFO_EXTENSION);
+        $ext = pathinfo($image['name'], PATHINFO_EXTENSION);
+        $rname = 'IMG_' .random_int(11111,99999).".$ext";
+
+        $img_path = UPLOAD_IMAGE_PATH.$folder.$rname;
+        if(move_uploaded_file($image['tmp_name'],$img_path)){
+            return $rname;
+        }
+        else{
+            return 'upd_failed';
+        }
     }
 }
 ?>

@@ -1,0 +1,21 @@
+{
+    "name": "hbwebsite/frontend",
+    "description": "A frontend for the Jay Homestay project.",
+    "authors": [
+        {
+            "name": "Huy Ngo",
+            "email": "ngogiahuyutc2@gmail.com"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "JayHomestay\\": "src/"
+        }
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}

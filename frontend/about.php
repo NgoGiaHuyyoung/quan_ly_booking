@@ -1,3 +1,10 @@
+<?php
+// Kiểm tra nếu có tham số showLoginModal trong URL
+$showLoginModal = isset($_GET['showLoginModal']) && $_GET['showLoginModal'] === 'true';
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 

@@ -26,7 +26,7 @@ router.post('/create-admin', createAdmin,verifyRole);
 router.post('/verifyEmail', verifyEmail);
 // router.post('/login', validateLogin, validate, login); 
 router.post('/login',login);
-router.post('/admin-login', verifyRole(['admin']),adminLogin);
+router.post('/admin-login',adminLogin);
 router.post('/refresh-token', refreshToken); 
 router.post(
   '/forgot-password',
