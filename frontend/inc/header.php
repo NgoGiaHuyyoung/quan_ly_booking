@@ -1,3 +1,10 @@
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+
+
 <nav class="navbar navbar-expand-lg navbar-light bg-white px-lg-3 py-lg-2 shadow-sm sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand me-5 fw-bold fs-3 h-font" href="index.php">Jay Homestay</a>
@@ -31,6 +38,10 @@
         </button>
         <button id="logoutLink" type="button" class="btn btn-dark shadow-none" data-bs-toggle="modal" data-bs-target="#logoutModal" style="display: none;">
           Logout
+        </button>
+        <button id="cartLink" href ="cart.php" type="button" class="btn btn-outline-dark shadow-none me-lg-3" data-bs-toggle="modal" data-bs-target="#cartModal" onclick="window.location.href='cart.php'">
+          <i class="fas fa-shopping-cart"></i> Cart
+          <span class="badge bg-danger rounded-pill"></span>
         </button>
       </div>
     </div>
@@ -86,6 +97,19 @@
                 <label class="form-label">Full Name</label>
                 <input type="text" class="form-control" id="registerName" placeholder="Enter your full name" required>
               </div>
+              <div class="col-md-6 ps-0 mb-3">
+                <label class="form-label">Age</label>
+                <input type="number" class="form-control" id="registerAge" placeholder="Enter your age" required>
+              </div>
+              <div class="col-md-6 p-0 mb-3">
+                <label class="form-label">Gender</label>
+                <select class="form-control" id="registerGender" required>
+                  <option value="">Select Gender</option>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
               <div class="col-md-6 p-0 mb-3">
                 <label class="form-label">Username</label>
                 <input type="text" class="form-control" id="registerUsername" placeholder="Choose a username" required>
@@ -133,3 +157,17 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.1.0/js/bootstrap.min.js"></script>

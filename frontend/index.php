@@ -1,6 +1,8 @@
 <?php
 // Kiểm tra nếu có tham số showLoginModal trong URL
 $showLoginModal = isset($_GET['showLoginModal']) && $_GET['showLoginModal'] === 'true';
+$isLoggedIn = isset($_SESSION['user']);
+
 ?>
 
 <!DOCTYPE html>
@@ -61,45 +63,9 @@ $showLoginModal = isset($_GET['showLoginModal']) && $_GET['showLoginModal'] === 
   </div>
 
   <!-- Check availability form -->
+  <?php require('inc/Checkavailability.php'); ?>
 
-  <div class="container availability-form">
-    <div class="row">
-      <div class="col-lg-12 bg-white shadow p-4 rounded">
-        <h5 class="mb-4">Check Booking Availability</h5>
-        <form>
-          <div class="row align-items-end">
-            <div class="col-lg-3 mb-3">
-              <label class="form-label" style="font-weight: 500;">Check-in</label>
-              <input type="date" class="form-control shawdow-none">
-            </div>
-            <div class="col-lg-3 mb-3">
-              <label class="form-label" style="font-weight: 500;">Check-out</label>
-              <input type="date" class="form-control shawdow-none">
-            </div>
-            <div class="col-lg-3 mb-3">
-              <label class="form-label" style="font-weight: 500;">Adult</label>
-              <select class="form-select shadow-none">
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-            <div class="col-lg-2 mb-3">
-              <label class="form-label" style="font-weight: 500;">Children</label>
-              <select class="form-select shadow-none">
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
-              </select>
-            </div>
-            <div class="col-lg-1 mb-lg-3 mt-2">
-              <button type="submit" class="btn text-white shadow-none custom-bg">Submit</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
+ 
 
   <!-- Our Rooms -->
 
@@ -489,59 +455,58 @@ $showLoginModal = isset($_GET['showLoginModal']) && $_GET['showLoginModal'] === 
   <!-- Liên kết đến file JavaScript -->
 <script src="admin/js/login-register.js"></script>
 
+
 <script>
-// Helper function để gắn sự kiện một cách an toàn
-function addEventListenerSafe(selector, event, callback) {
-    const element = document.getElementById(selector);
-    if (element) {
-        element.addEventListener(event, callback);
+    function addEventListenerSafe(selector, event, callback) {
+        const element = document.getElementById(selector);
+        if (element) {
+            element.addEventListener(event, callback);
+        }
     }
-}
 
-// Chờ DOM được tải hoàn toàn trước khi chạy script
-document.addEventListener('DOMContentLoaded', function() {
-    // Mở modal login
-    addEventListenerSafe('openLoginModal', 'click', function() {
-        document.getElementById('loginModal').style.display = 'block';
-    });
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mở modal login
+        addEventListenerSafe('openLoginModal', 'click', function() {
+            document.getElementById('loginModal').style.display = 'block';
+        });
 
-    // Mở modal register
-    addEventListenerSafe('openRegisterModal', 'click', function() {
-        document.getElementById('registerModal').style.display = 'block';
-    });
+        // Mở modal register
+        addEventListenerSafe('openRegisterModal', 'click', function() {
+            document.getElementById('registerModal').style.display = 'block';
+        });
 
-    // Đóng modal login
-    addEventListenerSafe('closeLoginModal', 'click', function() {
-        document.getElementById('loginModal').style.display = 'none';
-    });
+        // Đóng modal login
+        addEventListenerSafe('closeLoginModal', 'click', function() {
+            document.getElementById('loginModal').style.display = 'none';
+        });
 
-    // Đóng modal register
-    addEventListenerSafe('closeRegisterModal', 'click', function() {
-        document.getElementById('registerModal').style.display = 'none';
-    });
+        // Đóng modal register
+        addEventListenerSafe('closeRegisterModal', 'click', function() {
+            document.getElementById('registerModal').style.display = 'none';
+        });
 
-    // Mở modal logout
-    addEventListenerSafe('openLogoutModal', 'click', function() {
-        document.getElementById('logoutModal').style.display = 'block';
-    });
+        // Mở modal logout
+        addEventListenerSafe('openLogoutModal', 'click', function() {
+            document.getElementById('logoutModal').style.display = 'block';
+        });
 
-    // Đóng modal logout khi nhấn vào dấu "x"
-    addEventListenerSafe('closeLogoutModal', 'click', function() {
-        document.getElementById('logoutModal').style.display = 'none';
-    });
+        // Đóng modal logout khi nhấn vào dấu "x"
+        addEventListenerSafe('closeLogoutModal', 'click', function() {
+            document.getElementById('logoutModal').style.display = 'none';
+        });
 
-    // Đóng modal logout khi nhấn vào nút Cancel
-    addEventListenerSafe('cancelLogout', 'click', function() {
-        document.getElementById('logoutModal').style.display = 'none';
-    });
+        // Đóng modal logout khi nhấn vào nút Cancel
+        addEventListenerSafe('cancelLogout', 'click', function() {
+            document.getElementById('logoutModal').style.display = 'none';
+        });
 
-    // Xác nhận đăng xuất và thực hiện thao tác logout
-    addEventListenerSafe('confirmLogout', 'click', function() {
-        alert('You have logged out.');
-        document.getElementById('logoutModal').style.display = 'none';
+        // Xác nhận đăng xuất và thực hiện thao tác logout
+        addEventListenerSafe('confirmLogout', 'click', function() {
+            alert('You have logged out.');
+            document.getElementById('logoutModal').style.display = 'none';
+        });
     });
-});
-</script>
+    </script>
 
 
 

@@ -3,6 +3,7 @@
 $showLoginModal = isset($_GET['showLoginModal']) && $_GET['showLoginModal'] === 'true';
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -132,138 +133,137 @@ $showLoginModal = isset($_GET['showLoginModal']) && $_GET['showLoginModal'] === 
     <?php require('inc/footer.php'); ?>
 
     <script>
-        let currentPage = 1;
-        const roomsPerPage = 10;
+    let currentPage = 1;
+    const roomsPerPage = 10;
 
-        async function fetchRooms(page = 1) {
-            try {
-                const response = await fetch(`http://localhost:5000/api/rooms?page=${page}&limit=${roomsPerPage}`);
-                if (!response.ok) throw new Error(`Failed to fetch data: ${response.statusText}`);
+    async function fetchRooms(page = 1) {
+    try {
+        const response = await fetch(`http://localhost:5000/api/rooms?page=${page}&limit=${roomsPerPage}`);
+        if (!response.ok) throw new Error(`Failed to fetch data: ${response.statusText}`);
 
-                const data = await response.json();
+        const data = await response.json();
+        
+        // Log dữ liệu trả về từ API để kiểm tra
+        console.log(data); // Xem cấu trúc dữ liệu
 
-                // Kiểm tra dữ liệu trả về có hợp lệ không
-                if (!data.rooms || !Array.isArray(data.rooms)) {
-                    throw new Error('Invalid data format: Expected an array in "rooms" property');
-                }
-
-                const rooms = data.rooms;
-                const roomsContainer = document.getElementById('rooms-container');
-                const paginationContainer = document.getElementById('pagination-container');
-
-                // Xóa nội dung cũ trong các container
-                roomsContainer.innerHTML = '';
-                paginationContainer.innerHTML = '';
-
-                // Render các phòng
-                rooms.forEach(room => {
-                    // Kiểm tra và xử lý các trường hợp undefined hoặc không phải mảng
-                    const images = Array.isArray(room.images) ? room.images : [];
-                    const features = Array.isArray(room.features) ? room.features : [];
-                    const facilities = Array.isArray(room.facilities) ? room.facilities : [];
-
-                    roomsContainer.innerHTML += `
-                    <div class="card mb-4 border-0 shadow">
-                        <div class="row g-0 p-3 align-items-center">
-                            <div class="col-md-5">
-                                <div>
-                                    ${images.length > 0 
-                                        ? images.map(image => `<img src="http://localhost:5000${image}" alt="Room image" class="img-fluid rounded-start">`).join('') 
-                                        : `<img src="images/rooms/1.jpg" alt="Default Room image" class="img-fluid rounded-start">`}
-                                </div>
-                            </div>
-                            <div class="col-md-5 px-lg-3">
-                                <h5 class="mb-3">${sanitizeHTML(room.name)}</h5>
-                                ${generateBadgeSection('Features', features)}
-                                ${generateBadgeSection('Facilities', facilities)}
-                                <div class="guests">
-                                    <h6 class="mb-1">Guests</h6>
-                                    <span class="badge rounded-pill bg-light text-dark">${sanitizeHTML(room.maxGuests)} Guests</span>
-                                </div>
-                            </div>
-                            <div class="col-md-2 text-center">
-                                <h6 class="mb-4">$${sanitizeHTML(room.price)} per night</h6>
-                                <a href="rooms_details.php?id=${room.id}" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">Book Now</a>
-                                <a href="rooms_details.php?id=${room.id}" class="btn btn-sm w-100 btn-outline-dark shadow-none">More details</a>
-                            </div>
-                        </div>
-                    </div>`;
-                });
-
-                // Tính toán số trang và range phân trang
-                const totalPages = Math.ceil(data.totalRooms / roomsPerPage);
-                const paginationRange = getPaginationRange(page, totalPages);
-
-                // Thêm nút "Previous"
-                const prevButton = document.createElement('button');
-                prevButton.classList.add('pagination-button');
-                prevButton.innerText = 'Previous';
-                prevButton.disabled = page === 1;
-                prevButton.addEventListener('click', () => fetchRooms(page - 1));
-                paginationContainer.appendChild(prevButton);
-
-                // Thêm các nút trang
-                paginationRange.forEach(pageNum => {
-                    const pageButton = document.createElement('a');
-                    pageButton.classList.add('pagination-button');
-                    pageButton.href = "#";
-                    pageButton.innerText = pageNum;
-                    if (pageNum === page) {
-                        pageButton.classList.add('active');
-                    }
-                    pageButton.addEventListener('click', () => fetchRooms(pageNum));
-                    paginationContainer.appendChild(pageButton);
-                });
-
-                // Thêm nút "Next"
-                const nextButton = document.createElement('button');
-                nextButton.classList.add('pagination-button');
-                nextButton.innerText = 'Next';
-                nextButton.disabled = page === totalPages;
-                nextButton.addEventListener('click', () => fetchRooms(page + 1));
-                paginationContainer.appendChild(nextButton);
-
-            } catch (error) {
-                console.error('Error fetching rooms:', error);
-            }
+        if (!data.rooms || !Array.isArray(data.rooms)) {
+            throw new Error('Invalid data format: Expected an array in "rooms" property');
         }
 
-        // Hàm lấy phạm vi trang
-        function getPaginationRange(currentPage, totalPages) {
-            let start = Math.max(currentPage - 2, 1);
-            let end = Math.min(currentPage + 2, totalPages);
-            let range = [];
+        const rooms = data.rooms;
+        const roomsContainer = document.getElementById('rooms-container');
+        const paginationContainer = document.getElementById('pagination-container');
 
-            for (let i = start; i <= end; i++) {
-                range.push(i);
+        roomsContainer.innerHTML = '';
+        paginationContainer.innerHTML = '';
+
+        rooms.forEach(room => {
+   // Log từng phòng để kiểm tra _id
+   console.log(room);
+
+   const images = Array.isArray(room.images) ? room.images : [];
+   const features = Array.isArray(room.features) ? room.features : [];
+   const facilities = Array.isArray(room.facilities) ? room.facilities : [];
+
+   roomsContainer.innerHTML += `
+       <div class="card mb-4 border-0 shadow">
+           <div class="row g-0 p-3 align-items-center">
+               <div class="col-md-5">
+                   <div>
+                       ${images.length > 0 
+                           ? images.map(image => `<img src="http://localhost:5000${image}" alt="Room image" class="img-fluid rounded-start">`).join('') 
+                           : `<img src="images/rooms/1.jpg" alt="Default Room image" class="img-fluid rounded-start">`}
+                   </div>
+               </div>
+               <div class="col-md-5 px-lg-3">
+                   <h5 class="mb-3">${sanitizeHTML(room.name)}</h5>
+                   ${generateBadgeSection('Features', features)}
+                   ${generateBadgeSection('Facilities', facilities)}
+                   <div class="guests">
+                       <h6 class="mb-1">Guests</h6>
+                       <span class="badge rounded-pill bg-light text-dark">${sanitizeHTML(room.guests)} Guests</span>
+                   </div>
+               </div>
+               <div class="col-md-2 text-center">
+                   <h6 class="mb-4">$${sanitizeHTML(room.price)} per night</h6>
+                   <a href="rooms_details.php?id=${room._id}" class="btn btn-sm w-100 text-white custom-bg shadow-none mb-2">Book Now</a>
+                   <a href="rooms_details.php?id=${room._id}" class="btn btn-sm w-100 btn-outline-dark shadow-none">More details</a>
+               </div>
+           </div>
+       </div>`;
+});
+
+
+        const totalPages = Math.ceil(data.totalRooms / roomsPerPage);
+        const paginationRange = getPaginationRange(page, totalPages);
+
+        const prevButton = document.createElement('button');
+        prevButton.classList.add('pagination-button');
+        prevButton.innerText = 'Previous';
+        prevButton.disabled = page === 1;
+        prevButton.addEventListener('click', () => fetchRooms(page - 1));
+        paginationContainer.appendChild(prevButton);
+
+        paginationRange.forEach(pageNum => {
+            const pageButton = document.createElement('a');
+            pageButton.classList.add('pagination-button');
+            pageButton.href = "#";
+            pageButton.innerText = pageNum;
+            if (pageNum === page) {
+                pageButton.classList.add('active');
             }
+            pageButton.addEventListener('click', () => fetchRooms(pageNum));
+            paginationContainer.appendChild(pageButton);
+        });
 
-            return range;
+        const nextButton = document.createElement('button');
+        nextButton.classList.add('pagination-button');
+        nextButton.innerText = 'Next';
+        nextButton.disabled = page === totalPages;
+        nextButton.addEventListener('click', () => fetchRooms(page + 1));
+        paginationContainer.appendChild(nextButton);
+
+    } catch (error) {
+        console.error('Error fetching rooms:', error);
+    }
+}
+
+
+    function getPaginationRange(currentPage, totalPages) {
+        let start = Math.max(currentPage - 2, 1);
+        let end = Math.min(currentPage + 2, totalPages);
+        let range = [];
+
+        for (let i = start; i <= end; i++) {
+            range.push(i);
         }
 
-        // Hàm để sanitize dữ liệu
-        function sanitizeHTML(str) {
-            const element = document.createElement('div');
-            if (str) {
-                element.innerText = str;
-                return element.innerHTML;
-            }
-            return '';
-        }
+        return range;
+    }
 
-        // Hàm sinh phần badges cho Features và Facilities
-        function generateBadgeSection(title, items) {
+    function sanitizeHTML(str) {
+        const element = document.createElement('div');
+        if (str) {
+            element.innerText = str;
+            return element.innerHTML;
+        }
+        return '';
+    }
+
+    function generateBadgeSection(title, items) {
+        if (items.length > 0) {
             return `
-            <div>
-                <h6 class="mb-2">${title}</h6>
-                ${items.length > 0
-                ? items.map(item => `<span class="badge rounded-pill bg-light text-dark">${sanitizeHTML(item)}</span>`).join(' ')
-                : `<span class="badge rounded-pill bg-light text-dark">No ${title}</span>`}
-            </div>`;
+                <div class="mb-2">
+                    <h6 class="mb-2">${title}</h6>
+                    ${items.map(item => `<span class="badge rounded-pill bg-light text-dark">${sanitizeHTML(item)}</span>`).join(' ')}
+                </div>`;
         }
+        return '';
+    }
 
-        fetchRooms(currentPage);
+    fetchRooms(currentPage);
     </script>
+
 
 
 
@@ -273,48 +273,73 @@ $showLoginModal = isset($_GET['showLoginModal']) && $_GET['showLoginModal'] === 
     <script src="admin/js/login-register.js"></script>
 
     <!-- Thêm một số JavaScript cho modal -->
-    <script>
+<script>
+    function addEventListenerSafe(selector, event, callback) {
+        const element = document.getElementById(selector);
+        if (element) {
+            element.addEventListener(event, callback);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
         // Mở modal login
-        document.getElementById('openLoginModal').addEventListener('click', function() {
+        addEventListenerSafe('openLoginModal', 'click', function() {
             document.getElementById('loginModal').style.display = 'block';
         });
 
         // Mở modal register
-        document.getElementById('openRegisterModal').addEventListener('click', function() {
+        addEventListenerSafe('openRegisterModal', 'click', function() {
             document.getElementById('registerModal').style.display = 'block';
         });
 
         // Đóng modal login
-        document.getElementById('closeLoginModal').addEventListener('click', function() {
+        addEventListenerSafe('closeLoginModal', 'click', function() {
             document.getElementById('loginModal').style.display = 'none';
         });
 
         // Đóng modal register
-        document.getElementById('closeRegisterModal').addEventListener('click', function() {
+        addEventListenerSafe('closeRegisterModal', 'click', function() {
             document.getElementById('registerModal').style.display = 'none';
         });
 
         // Mở modal logout
-        document.getElementById('openLogoutModal').addEventListener('click', function() {
+        addEventListenerSafe('openLogoutModal', 'click', function() {
             document.getElementById('logoutModal').style.display = 'block';
         });
 
         // Đóng modal logout khi nhấn vào dấu "x"
-        document.getElementById('closeLogoutModal').addEventListener('click', function() {
+        addEventListenerSafe('closeLogoutModal', 'click', function() {
             document.getElementById('logoutModal').style.display = 'none';
         });
 
         // Đóng modal logout khi nhấn vào nút Cancel
-        document.getElementById('cancelLogout').addEventListener('click', function() {
+        addEventListenerSafe('cancelLogout', 'click', function() {
             document.getElementById('logoutModal').style.display = 'none';
         });
 
         // Xác nhận đăng xuất và thực hiện thao tác logout
-        document.getElementById('confirmLogout').addEventListener('click', function() {
+        addEventListenerSafe('confirmLogout', 'click', function() {
             alert('You have logged out.');
             document.getElementById('logoutModal').style.display = 'none';
         });
-    </script>
+
+        // Mở modal giỏ hàng
+        addEventListenerSafe('openCartModal', 'click', function() {
+            document.getElementById('cartModal').style.display = 'block';
+        });
+
+        // Đóng modal giỏ hàng
+        addEventListenerSafe('closeCartModal', 'click', function() {
+            document.getElementById('cartModal').style.display = 'none';
+        });
+
+        // Đóng modal giỏ hàng khi nhấn vào nút Cancel
+        addEventListenerSafe('cancelCart', 'click', function() {
+            document.getElementById('cartModal').style.display = 'none';
+        });
+    });
+</script>
+
 </body>
 
 

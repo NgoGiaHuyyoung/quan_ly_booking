@@ -10,6 +10,16 @@ const userSchema = new mongoose.Schema(
       required: [true, 'Name is required'],
       trim: true,
     },
+    age: {
+      type: Number,
+      required: [true, 'Age is required'],
+      min: [1, 'Age must be at least 1'],
+    },
+    gender: {
+      type: String,
+      enum: ['male', 'female', 'other'],
+      required: [true, 'Gender is required'],
+    },
     username: {
       type: String,
       required: [true, 'Username is required'],

@@ -13,6 +13,7 @@ import billingRoutes from './routes/billingRoutes.js';
 import reviewRoutes from './routes/reviewRoutes.js';
 import settingRoutes from './routes/settingRoutes.js';
 import logRoutes from './routes/logRoutes.js';
+import cartRoutes from './routes/cartRoutes.js';
 import path from 'path'; // Thêm module path
 import fs from 'fs'; // Thêm module fs
 import { fileURLToPath } from 'url'; // Thêm fileURLToPath để lấy __dirname
@@ -66,6 +67,7 @@ app.use('/api/payments', billingRoutes);
 app.use('/api/reviews', reviewRoutes);
 app.use('/api/settings', settingRoutes);
 app.use('/api/logs', logRoutes);
+app.use('/api/cart', cartRoutes);
 
 // Middleware xử lý lỗi khi không tìm thấy route
 app.use((req, res, next) => {

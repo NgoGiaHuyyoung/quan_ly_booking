@@ -1,8 +1,9 @@
 <?php
 // Kiểm tra nếu có tham số showLoginModal trong URL
 $showLoginModal = isset($_GET['showLoginModal']) && $_GET['showLoginModal'] === 'true';
-?>
+$isLoggedIn = isset($_SESSION['user']);
 
+?>
 
 
 <!DOCTYPE html>
@@ -150,6 +151,64 @@ $showLoginModal = isset($_GET['showLoginModal']) && $_GET['showLoginModal'] === 
             }
         });
     </script>
+
+  <!-- Liên kết đến file JavaScript -->
+  <script src="admin/js/login-register.js"></script>
+
+
+<script>
+    function addEventListenerSafe(selector, event, callback) {
+        const element = document.getElementById(selector);
+        if (element) {
+            element.addEventListener(event, callback);
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mở modal login
+        addEventListenerSafe('openLoginModal', 'click', function() {
+            document.getElementById('loginModal').style.display = 'block';
+        });
+
+        // Mở modal register
+        addEventListenerSafe('openRegisterModal', 'click', function() {
+            document.getElementById('registerModal').style.display = 'block';
+        });
+
+        // Đóng modal login
+        addEventListenerSafe('closeLoginModal', 'click', function() {
+            document.getElementById('loginModal').style.display = 'none';
+        });
+
+        // Đóng modal register
+        addEventListenerSafe('closeRegisterModal', 'click', function() {
+            document.getElementById('registerModal').style.display = 'none';
+        });
+
+        // Mở modal logout
+        addEventListenerSafe('openLogoutModal', 'click', function() {
+            document.getElementById('logoutModal').style.display = 'block';
+        });
+
+        // Đóng modal logout khi nhấn vào dấu "x"
+        addEventListenerSafe('closeLogoutModal', 'click', function() {
+            document.getElementById('logoutModal').style.display = 'none';
+        });
+
+        // Đóng modal logout khi nhấn vào nút Cancel
+        addEventListenerSafe('cancelLogout', 'click', function() {
+            document.getElementById('logoutModal').style.display = 'none';
+        });
+
+        // Xác nhận đăng xuất và thực hiện thao tác logout
+        addEventListenerSafe('confirmLogout', 'click', function() {
+            alert('You have logged out.');
+            document.getElementById('logoutModal').style.display = 'none';
+        });
+    });
+    </script>
+
+
 
 </body>
 

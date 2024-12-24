@@ -250,14 +250,49 @@ export const updateRoomStatus = async (req, res) => {
 // Tìm phòng
 export const searchRooms = async (req, res) => {
   try {
-    const query = req.query;
+    const { checkIn, checkOut, name, guests } = req.query;
+
+    // Xây dựng đối tượng truy vấn để tìm kiếm
+    let query = {};
+
+    // Tìm theo tên phòng nếu có
+    if (name) {
+      query.name = { $regex: name, $options: 'i' }; // Tìm kiếm tên phòng không phân biệt chữ hoa/thường
+    }
+
+    // Tìm theo số lượng khách nếu có
+    if (guests) {
+      query.guests = { $gte: parseInt(guests) }; // Tìm phòng có thể chứa ít nhất số lượng khách yêu cầu
+    }
+
+    // Kiểm tra ngày đặt phòng (checkIn và checkOut)
+    if (checkIn && checkOut) {
+      query.bookings = {
+        $not: {
+          $elemMatch: {
+            $or: [
+              { checkIn: { $gte: new Date(checkIn), $lt: new Date(checkOut) } },
+              { checkOut: { $gt: new Date(checkIn), $lte: new Date(checkOut) } }
+            ]
+          }
+        }
+      };
+    }
+
+    // Tìm phòng dựa trên truy vấn
     const rooms = await Room.find(query);
-    res.status(200).send(rooms);
+
+    if (rooms.length === 0) {
+      return res.status(404).send({ message: 'Không có phòng nào phù hợp.' });
+    }
+
+    res.status(200).json(rooms);
   } catch (error) {
-    logger.error(`Error searching rooms: ${error.message}`);
-    res.status(500).send({ error: 'Error searching rooms' });
+    console.error(`Error searching rooms: ${error.message}`);
+    res.status(500).send({ message: 'Có lỗi xảy ra khi tìm phòng.' });
   }
 };
+
 
 // Chuyển phòng
 export const moveRoom = async (req, res) => {

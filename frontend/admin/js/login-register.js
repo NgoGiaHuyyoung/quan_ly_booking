@@ -4,21 +4,27 @@ document.addEventListener('DOMContentLoaded', function () {
     const registerModal = new bootstrap.Modal(document.getElementById('registerModal'));
     const logoutModal = new bootstrap.Modal(document.getElementById('logoutModal'));
 
+
     const loginLink = document.getElementById('loginLink');
     const registerLink = document.getElementById('registerLink');
     const logoutLink = document.getElementById('logoutLink');
+    const cartLink = document.getElementById('cartLink');
 
     // Hàm cập nhật hiển thị nút trong header
     function updateHeaderButtons() {
         const accessToken = sessionStorage.getItem('accessToken'); // Lấy accessToken từ sessionStorage
         if (accessToken) {
+            // Hiển thị logout và cart khi đã đăng nhập
             loginLink.style.display = 'none';
             registerLink.style.display = 'none';
             logoutLink.style.display = 'block';
+            cartLink.style.display = 'block';
         } else {
+            // Hiển thị login và register khi chưa đăng nhập
             loginLink.style.display = 'block';
             registerLink.style.display = 'block';
             logoutLink.style.display = 'none';
+            cartLink.style.display = 'none';
         }
     }
 
@@ -44,14 +50,22 @@ document.addEventListener('DOMContentLoaded', function () {
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ email, password })
                 });
+
+                // Kiểm tra mã trạng thái HTTP của phản hồi
+                if (!response.ok) {
+                    throw new Error('Failed to login, please check your credentials');
+                }
+
                 const data = await response.json();
+                console.log(data); // Kiểm tra dữ liệu trả về từ API
 
                 if (data.success) {
                     alert('Login successful!');
-                    // Lưu accessToken và refreshToken vào sessionStorage
+                    // Lưu accessToken, refreshToken và user vào sessionStorage
                     sessionStorage.setItem('accessToken', data.accessToken);
                     sessionStorage.setItem('refreshToken', data.refreshToken);
                     sessionStorage.setItem('user', JSON.stringify(data.user));
+
                     loginModal.hide();
                     updateHeaderButtons(); // Cập nhật lại nút hiển thị trong header sau khi đăng nhập
                 } else {
@@ -75,8 +89,10 @@ document.addEventListener('DOMContentLoaded', function () {
             const phone = document.getElementById('registerPhone')?.value.trim();
             const password = document.getElementById('registerPassword')?.value.trim();
             const confirmPassword = document.getElementById('registerConfirmPassword')?.value.trim();
+            const age = document.getElementById('registerAge')?.value.trim();
+            const gender = document.getElementById('registerGender')?.value;
 
-            if (!name || !username || !email || !phone || !password || !confirmPassword) {
+            if (!name || !username || !email || !phone || !password || !confirmPassword || !age || !gender) {
                 alert('Please fill in all fields.');
                 return;
             }
@@ -90,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const response = await fetch('http://localhost:5000/api/auth/register', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ name, username, email, phone, password, role: 'customer' })
+                    body: JSON.stringify({ name, username, email, phone, password, role: 'customer', age, gender })
                 });
                 const data = await response.json();
 

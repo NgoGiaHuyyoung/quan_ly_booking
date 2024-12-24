@@ -58,12 +58,19 @@ const RoomSchema = new mongoose.Schema({
     required: true, 
     min: [1, 'Đánh giá phải từ 1 đến 5'], 
     max: [5, 'Đánh giá phải từ 1 đến 5']
-  }
+  },
+  bookings: [{
+    checkIn: { type: Date, required: true },
+    checkOut: { type: Date, required: true },
+    guestCount: { type: Number, required: true }
+  }]
 }, { timestamps: true });
 
 // Thuộc tính ảo để tính số lượng phòng đã đặt
 RoomSchema.virtual('bookedQuantity').get(function() {
-  return this.quantity - this.availableQuantity;
+  return this.bookings.reduce((acc, booking) => {
+    return acc + booking.guestCount;
+  }, 0);
 });
 
 // Middleware để đảm bảo availableQuantity không vượt quá quantity

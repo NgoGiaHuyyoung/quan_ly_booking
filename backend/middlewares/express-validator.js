@@ -48,6 +48,15 @@ export const validateRegistration = [
     .withMessage('Mật khẩu phải chứa ít nhất một chữ số')
     .matches(/[@$!%*?&]/)
     .withMessage('Mật khẩu phải chứa ít nhất một ký tự đặc biệt (@$!%*?&)'),
+    // Kiểm tra giới tính
+    body('gender')
+    .isIn(['male', 'female', 'other'])
+    .withMessage('Giới tính phải là male, female hoặc other'),
+
+  // Kiểm tra tuổi
+  body('age')
+    .isInt({ min: 18 })
+    .withMessage('Tuổi phải lớn hơn hoặc bằng 18'),
   checkUserExists, 
 ];
 

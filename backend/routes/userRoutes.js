@@ -15,8 +15,8 @@ const router = express.Router();
 
 router.get('/', verifyToken, logAction('GET_ALL_USERS'), getAllUsers);
 
-
-router.get('/:id', verifyToken, logAction('GET_USER_BY_ID'), getUserById);
+router.get('/:id', verifyToken, getUserById);
+// router.get('/:id', verifyToken, logAction('GET_USER_BY_ID'), getUserById);
 
 
 router.post('/', verifyToken, logAction('CREATE_USER'), createUser);

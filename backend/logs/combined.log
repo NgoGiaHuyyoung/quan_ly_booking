@@ -1,1 +1,423 @@
 2024-12-14T21:50:59.630Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T00:15:46.005Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T00:15:48.557Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T00:16:26.192Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T00:25:43.675Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T00:25:47.606Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T00:59:09.656Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T00:59:11.867Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T00:59:13.876Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T00:59:18.079Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T07:41:16.287Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T07:42:04.489Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T08:02:24.344Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T08:02:25.736Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T08:02:29.948Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T08:43:52.954Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T08:43:57.304Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T08:44:03.281Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T08:45:30.430Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T08:47:45.118Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T08:47:48.068Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T08:47:50.485Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T08:48:47.090Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T09:05:45.849Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T09:06:26.817Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T09:06:36.062Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T09:11:44.927Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T09:24:11.808Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T09:25:00.899Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T09:29:07.391Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T09:38:15.684Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T09:40:37.036Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T09:55:38.700Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T09:57:56.464Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T09:57:57.533Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T09:58:07.364Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T10:04:39.092Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T10:12:32.844Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T10:13:15.454Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T10:13:17.679Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T10:13:19.893Z [WARN] : Invalid room ID: undefined
+2024-12-18T10:14:11.216Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T10:16:35.650Z [WARN] : Invalid room ID: undefined
+2024-12-18T10:16:38.451Z [WARN] : Invalid room ID: undefined
+2024-12-18T10:18:28.680Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T10:40:14.195Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T10:40:16.601Z [WARN] : Invalid room ID: undefined
+2024-12-18T10:40:49.863Z [WARN] : Invalid room ID: undefined
+2024-12-18T10:40:52.419Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T10:40:55.217Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T10:40:58.131Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T10:41:03.242Z [INFO] : Fetched room with ID: 675a0add4645a71dfd9d5708
+2024-12-18T10:41:07.901Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T10:42:29.158Z [INFO] : Fetched room with ID: 674a5b2591e0721cd1005f0a
+2024-12-18T10:46:38.207Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T10:46:42.494Z [INFO] : Fetched room with ID: 674a5b2591e0721cd1005f0a
+2024-12-18T10:47:08.580Z [INFO] : Fetched room with ID: 674a5b2591e0721cd1005f0a
+2024-12-18T10:47:11.321Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T10:47:12.524Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T10:47:15.176Z [INFO] : Fetched room with ID: 67271f8a4bdfa074ba7944dc
+2024-12-18T10:47:44.858Z [INFO] : Fetched room with ID: 67271f8a4bdfa074ba7944dc
+2024-12-18T10:47:49.137Z [INFO] : Fetched room with ID: 67271f8a4bdfa074ba7944dc
+2024-12-18T11:09:25.520Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T11:09:28.736Z [INFO] : Fetched room with ID: 672720674bdfa074ba7944e8
+2024-12-18T11:11:20.304Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T11:11:22.802Z [INFO] : Fetched room with ID: 67271fa74bdfa074ba7944de
+2024-12-18T11:11:28.645Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T11:11:30.824Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T11:11:35.923Z [INFO] : Fetched room with ID: 675a0add4645a71dfd9d5708
+2024-12-18T11:11:43.175Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T11:11:46.223Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T11:11:48.419Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T11:11:51.355Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T11:12:00.952Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T11:12:04.779Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T11:13:35.463Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T11:13:37.795Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T11:13:40.189Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T11:13:50.186Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T11:15:26.649Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T11:15:30.582Z [INFO] : Fetched room with ID: 672720f24bdfa074ba7944ec
+2024-12-18T11:15:32.753Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T11:15:35.303Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T11:15:53.417Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T11:15:56.223Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T11:15:59.676Z [INFO] : Fetched room with ID: 675a0add4645a71dfd9d5708
+2024-12-18T11:16:02.143Z [INFO] : Fetched room with ID: 674a5b2591e0721cd1005f0a
+2024-12-18T11:16:04.691Z [INFO] : Fetched room with ID: 674a5b2591e0721cd1005f0a
+2024-12-18T15:03:04.480Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T15:03:08.688Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T15:03:15.528Z [INFO] : Fetched room with ID: 674a5b2591e0721cd1005f0a
+2024-12-18T15:15:43.372Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T15:16:07.279Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T15:16:09.458Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T15:51:23.714Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T15:51:25.971Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T15:51:28.914Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T16:46:24.865Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T16:46:38.375Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-18T16:47:08.442Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-18T17:21:25.922Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-19T01:15:17.956Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-19T01:15:21.852Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-19T01:15:26.703Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-19T01:57:56.066Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-19T02:00:33.643Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-19T02:00:36.035Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-19T02:02:30.313Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-19T02:02:33.769Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-19T02:02:36.666Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-19T02:07:47.638Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-19T15:56:01.513Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-19T15:56:04.410Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-19T15:56:06.977Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-19T15:56:49.297Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-19T17:16:09.823Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-19T18:37:34.448Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-19T21:20:24.906Z [ERROR] : Error creating log: req.get is not a function
+2024-12-19T21:20:28.375Z [ERROR] : Error creating log: req.get is not a function
+2024-12-19T21:20:29.475Z [ERROR] : Error creating log: req.get is not a function
+2024-12-19T21:20:30.202Z [ERROR] : Error creating log: req.get is not a function
+2024-12-19T21:20:30.877Z [ERROR] : Error creating log: req.get is not a function
+2024-12-20T18:53:53.246Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-20T21:36:55.374Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-20T21:36:58.655Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-20T21:37:02.507Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T00:43:06.580Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T00:44:02.021Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T00:46:35.980Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T00:46:51.736Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T00:50:23.379Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T00:50:36.576Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T00:54:12.807Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T00:55:10.953Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T00:55:21.868Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T00:56:11.003Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T00:57:20.551Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T00:57:23.787Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T00:57:27.396Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T16:38:20.672Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T16:38:38.392Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T16:40:18.105Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T16:40:21.003Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T16:40:21.266Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T16:40:27.526Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T16:45:05.803Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T16:45:08.428Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T16:45:10.503Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T16:48:47.039Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T16:52:58.636Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T16:54:18.807Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T17:19:37.101Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T17:19:39.938Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T17:19:42.203Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T17:19:54.930Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T17:28:54.460Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T17:29:36.953Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T17:35:45.499Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T17:41:41.992Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T17:44:45.581Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T17:55:32.397Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T17:58:25.743Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T17:58:25.949Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T17:58:27.961Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T17:58:29.956Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T18:02:42.052Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T18:11:25.018Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T18:58:37.098Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T18:58:39.551Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T18:58:42.775Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T19:03:09.160Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T19:03:20.689Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T19:03:29.639Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T19:03:32.277Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T19:06:49.694Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T19:08:41.967Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T19:08:59.550Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T20:08:59.807Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T20:09:55.219Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T20:12:12.116Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T20:28:17.300Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T20:31:57.181Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T20:43:04.809Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T20:47:26.604Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T21:33:28.628Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T21:36:35.905Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-21T21:36:38.506Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-21T21:41:13.713Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-22T20:07:12.141Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:10:42.335Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:10:45.587Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:13:06.820Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:13:09.819Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:14:39.215Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:14:41.632Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:19:14.207Z [WARN] : Invalid room ID: 675ccd3350d6b453b90cc64d
+
+2024-12-22T20:19:17.068Z [WARN] : Invalid room ID: 675ccd3350d6b453b90cc64d
+
+2024-12-22T20:19:17.968Z [WARN] : Invalid room ID: 675ccd3350d6b453b90cc64d
+
+2024-12-22T20:19:18.809Z [WARN] : Invalid room ID: 675ccd3350d6b453b90cc64d
+
+2024-12-22T20:19:19.740Z [WARN] : Invalid room ID: 675ccd3350d6b453b90cc64d
+
+2024-12-22T20:19:31.447Z [WARN] : Invalid room ID: 675ccd3350d6b453b90cc64d
+
+2024-12-22T20:19:31.921Z [WARN] : Invalid room ID: 675ccd3350d6b453b90cc64d
+
+2024-12-22T20:19:42.284Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-22T20:20:08.046Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-22T20:20:09.011Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-22T20:20:17.110Z [WARN] : Invalid room ID: 675ccd3350d6b453b90cc64d
+
+2024-12-22T20:20:18.246Z [WARN] : Invalid room ID: 675ccd3350d6b453b90cc64d
+
+2024-12-22T20:20:19.126Z [WARN] : Invalid room ID: 675ccd3350d6b453b90cc64d
+
+2024-12-22T20:20:19.950Z [WARN] : Invalid room ID: 675ccd3350d6b453b90cc64d
+
+2024-12-22T20:20:20.559Z [WARN] : Invalid room ID: 675ccd3350d6b453b90cc64d
+
+2024-12-22T20:20:35.561Z [WARN] : Invalid room ID: 675ccd3350d6b453b90cc64d
+
+2024-12-22T20:20:44.673Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-22T20:21:28.294Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-22T20:21:29.258Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-22T20:22:14.707Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:22:17.230Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:22:19.580Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:22:23.485Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:22:28.801Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:22:31.658Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:23:30.795Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:23:33.272Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:27:21.887Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:27:32.615Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:30:56.347Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:30:58.871Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:36:25.680Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:36:26.027Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:36:28.563Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:38:05.668Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:38:12.120Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:38:12.367Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:38:12.729Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:42:28.080Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:42:30.623Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T20:44:23.632Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-22T21:57:51.408Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-22T21:59:16.861Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-22T21:59:19.989Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-22T22:00:24.067Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-22T22:00:43.924Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-22T22:00:47.517Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:07:42.541Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:07:56.809Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:08:16.186Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:08:26.020Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:08:38.666Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:08:45.661Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:08:55.858Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:09:00.585Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:11:04.943Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-23T00:15:19.605Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-23T00:15:22.236Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-23T00:15:24.289Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:16:03.423Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:16:15.221Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:35:41.817Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:36:04.155Z [INFO] : Fetched room with ID: 672720f24bdfa074ba7944ec
+2024-12-23T00:36:08.833Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-23T00:36:10.513Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:38:14.283Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:40:17.113Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:40:21.435Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:42:03.473Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:43:10.152Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T00:43:54.143Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T14:58:46.501Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T14:58:48.740Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T14:59:02.603Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:03:32.156Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:07:42.310Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:07:51.182Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:07:57.415Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:08:27.224Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:08:37.685Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:09:00.355Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:09:00.450Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:13:50.077Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:14:34.734Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:14:40.615Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:14:40.906Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:15:26.118Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:15:29.882Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:18:10.569Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:18:16.849Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:22:36.398Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-23T15:22:47.629Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:22:48.664Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:23:59.247Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:25:33.180Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:27:10.408Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:27:52.421Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:28:02.266Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:33:53.957Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:35:46.330Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:35:54.129Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:42:21.161Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:43:22.795Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:43:38.166Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:47:09.238Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:49:32.078Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:50:11.129Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:51:43.600Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:52:32.195Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:54:09.753Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:56:53.520Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:57:55.563Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T15:58:04.758Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T16:01:16.795Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T16:03:22.627Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T16:04:16.204Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T16:06:05.618Z [INFO] : Fetched room with ID: 67271eb14bdfa074ba7944d8
+2024-12-23T16:06:38.840Z [INFO] : Fetched room with ID: 67271eb14bdfa074ba7944d8
+2024-12-23T16:07:25.987Z [INFO] : Fetched room with ID: 67271eb14bdfa074ba7944d8
+2024-12-23T16:07:45.073Z [INFO] : Fetched room with ID: 67271eb14bdfa074ba7944d8
+2024-12-23T16:08:21.479Z [INFO] : Fetched room with ID: 67271eb14bdfa074ba7944d8
+2024-12-23T16:15:10.302Z [INFO] : Fetched room with ID: 67271eb14bdfa074ba7944d8
+2024-12-23T16:15:25.143Z [INFO] : Fetched room with ID: 67271eb14bdfa074ba7944d8
+2024-12-23T16:25:02.681Z [INFO] : Fetched room with ID: 67271eb14bdfa074ba7944d8
+2024-12-23T16:27:18.887Z [INFO] : Fetched room with ID: 67271eb14bdfa074ba7944d8
+2024-12-23T16:27:29.660Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-23T16:27:32.027Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-23T16:27:33.712Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T16:29:12.814Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T16:31:49.143Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T16:34:30.996Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T16:34:31.542Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T16:38:31.989Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-23T16:40:09.342Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-23T16:40:11.484Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-23T16:40:13.768Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T16:44:34.809Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T18:28:54.251Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-23T18:28:55.863Z [INFO] : Fetched room with ID: 67271fbf4bdfa074ba7944e0
+2024-12-23T18:29:05.741Z [INFO] : Fetched room with ID: 67271fbf4bdfa074ba7944e0
+2024-12-23T18:31:24.131Z [INFO] : Fetched room with ID: 67271fbf4bdfa074ba7944e0
+2024-12-23T18:31:29.687Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-23T18:31:31.412Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T18:33:26.655Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T18:37:57.411Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T18:44:23.540Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T18:46:18.981Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T18:47:51.058Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T18:47:55.271Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T18:47:55.565Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T18:47:55.920Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T18:50:26.681Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T18:55:14.125Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T18:56:09.099Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T19:17:34.406Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T19:18:30.115Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T19:18:30.383Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T19:20:26.748Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T19:23:30.454Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T19:46:56.429Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T20:48:47.328Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-23T20:48:49.532Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-23T20:48:51.232Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T21:15:19.569Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-23T21:15:21.227Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T21:15:26.101Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-23T21:33:03.126Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-23T21:33:26.295Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-23T21:34:18.665Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-23T21:34:31.792Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:25:02.954Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:25:05.849Z [INFO] : Fetched room with ID: 672720f24bdfa074ba7944ec
+2024-12-24T00:25:11.673Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:25:19.098Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-24T00:25:55.157Z [INFO] : Fetched room with ID: 675a0add4645a71dfd9d5708
+2024-12-24T00:28:13.173Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:31:39.629Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:31:43.098Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:31:44.119Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:31:45.047Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:33:32.746Z [ERROR] : Error updating room: Cast to Number failed for value "[ 2 ]" (type Array) at path "guests"
+2024-12-24T00:34:21.692Z [INFO] : Updated room with ID: 67271eb14bdfa074ba7944d8
+2024-12-24T00:34:41.189Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:34:48.794Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:34:59.631Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:35:06.911Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:35:14.170Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:35:21.701Z [INFO] : Fetched room with ID: 67271eb14bdfa074ba7944d8
+2024-12-24T00:40:45.027Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:40:47.945Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:42:13.156Z [INFO] : Fetched room with ID: 67271f8a4bdfa074ba7944dc
+2024-12-24T00:42:25.016Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:48:01.164Z [WARN] : Room not found with ID: 67271eb14bdfa074ba7944d8
+2024-12-24T00:48:04.552Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:51:30.857Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:51:34.063Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T00:51:49.909Z [INFO] : Fetched room with ID: 676a051e077c7f2da68baf2d
+2024-12-24T00:52:02.914Z [INFO] : Fetched room with ID: 676a051e077c7f2da68baf2d
+2024-12-24T00:56:03.481Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-24T01:10:27.934Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T01:10:33.422Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T01:12:59.742Z [WARN] : Room not found with ID: 67271fa74bdfa074ba7944de
+2024-12-24T01:13:15.330Z [WARN] : Room not found with ID: 67271fa74bdfa074ba7944de
+2024-12-24T01:13:16.584Z [WARN] : Room not found with ID: 67271fa74bdfa074ba7944de
+2024-12-24T01:13:32.329Z [INFO] : Fetched room with ID: 676a0587077c7f2da68baf33
+2024-12-24T01:22:08.874Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-24T01:36:22.880Z [WARN] : Invalid room ID: search
+2024-12-24T01:36:24.494Z [WARN] : Invalid room ID: search
+2024-12-24T01:37:14.676Z [WARN] : Invalid room ID: search
+2024-12-24T01:37:45.033Z [WARN] : Invalid room ID: search
+2024-12-24T01:37:46.924Z [WARN] : Invalid room ID: search
+2024-12-24T01:39:39.929Z [WARN] : Invalid room ID: search
+2024-12-24T01:39:41.308Z [WARN] : Invalid room ID: search
+2024-12-24T01:39:42.394Z [WARN] : Invalid room ID: search
+2024-12-24T01:39:46.904Z [WARN] : Invalid room ID: search

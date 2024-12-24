@@ -53,9 +53,9 @@ return { accessToken, refreshToken };
 };
 
 export const register = async (req, res) => {
-  const { name, username, email, password, phone } = req.body;
+  const { name, username, email, password, phone, age, gender } = req.body;
 
-
+  // Regex kiểm tra độ phức tạp của mật khẩu
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
   if (!passwordRegex.test(password)) {
     return res.status(400).json({
@@ -64,8 +64,9 @@ export const register = async (req, res) => {
     });
   }
 
-  try {
 
+  try {
+    // Kiểm tra email đã tồn tại hay chưa
     const existingUser = await User.findOne({ email });
     if (existingUser) {
       return res.status(409).json({
@@ -74,34 +75,35 @@ export const register = async (req, res) => {
       });
     }
 
+    // Tạo token xác thực email
+    const verificationToken = crypto.randomBytes(20).toString('hex');
 
-    const verificationToken = crypto.randomBytes(20).toString('hex');  
-
- 
+    // Tạo người dùng mới
     const newUser = new User({
       name,
       username,
       email,
-      password,  
+      password,
       phone,
-      role: 'customer', 
-      verified: false,  
-      verificationToken,  
+      age,
+      gender,
+      role: 'customer', // Mặc định là khách hàng
+      verified: false, // Mặc định chưa xác thực
+      verificationToken, // Token xác thực
     });
 
-    
+    // Lưu người dùng vào cơ sở dữ liệu
     await newUser.save();
 
-  
+    // Liên kết xác thực email
     const verificationLink = `http://localhost/hbwebsite/frontend/verify-email.php?email=${email}&token=${verificationToken}`;
 
-    
+    // Gửi email xác thực
     await sendEmail(
       email,
       'Xác thực email đăng ký tài khoản',
       `Vui lòng nhấp vào liên kết sau để kích hoạt tài khoản của bạn: ${verificationLink}`
     );
-
 
     res.status(201).json({
       success: true,
@@ -115,6 +117,7 @@ export const register = async (req, res) => {
     });
   }
 };
+
 
 export const createAdmin = async (req, res) => {
   try {
@@ -246,12 +249,24 @@ export const login = async (req, res) => {
     user.refreshToken = refreshToken;
     await user.save();
 
-    res.json({ success: true, accessToken, refreshToken });
+    res.json({
+      success: true,
+      accessToken,
+      refreshToken,
+      user: {
+        username: user.username,
+        email: user.email,
+        age: user.age, // Thêm thông tin age
+        gender: user.gender, // Thêm thông tin gender
+      }
+    });
   } catch (error) {
     console.error('Error during login:', error);
     res.status(500).json({ success: false, message: 'Có lỗi xảy ra!' });
   }
 };
+
+
 
 
 export const adminLogin = async (req, res) => {
