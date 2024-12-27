@@ -53,7 +53,7 @@ return { accessToken, refreshToken };
 };
 
 export const register = async (req, res) => {
-  const { name, username, email, password, phone, age, gender } = req.body;
+  const { name, username, email, password, phone, age, gender, address } = req.body;
 
   // Regex kiểm tra độ phức tạp của mật khẩu
   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$/;
@@ -87,6 +87,7 @@ export const register = async (req, res) => {
       phone,
       age,
       gender,
+      address,
       role: 'customer', // Mặc định là khách hàng
       verified: false, // Mặc định chưa xác thực
       verificationToken, // Token xác thực
@@ -256,8 +257,12 @@ export const login = async (req, res) => {
       user: {
         username: user.username,
         email: user.email,
-        age: user.age, // Thêm thông tin age
+        age: user.age, // Thêm thông tin ages
         gender: user.gender, // Thêm thông tin gender
+        name: user.name,
+        phone: user.phone,
+        address: user.address,
+        userId: user._id 
       }
     });
   } catch (error) {

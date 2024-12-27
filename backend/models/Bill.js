@@ -31,8 +31,30 @@ const billSchema = new mongoose.Schema({
     type: [String],
     default: [],
   },
+  // Các trường mới cho thanh toán MoMo
+  transactionId: {
+    type: String,  // Mã giao dịch từ MoMo
+    default: null,
+  },
+  paymentMethod: {
+    type: String,  // Phương thức thanh toán (ví dụ: MoMo, thẻ tín dụng)
+    default: 'MoMo',
+  },
+  paymentStatus: {
+    type: String,  // Trạng thái thanh toán (thành công, thất bại)
+    enum: ['success', 'failed', 'pending'],
+    default: 'pending',
+  },
+  paymentTimestamp: {
+    type: Date,  // Thời gian thanh toán
+    default: null,
+  },
+  transactionDetails: {
+    type: mongoose.Schema.Types.Mixed,  // Chi tiết giao dịch nếu cần
+    default: null,
+  },
 });
 
 const Bill = mongoose.model('Bill', billSchema);
 
-export default Bill;  // Đảm bảo rằng Bill được xuất khẩu dưới dạng mặc định
+export default Bill;

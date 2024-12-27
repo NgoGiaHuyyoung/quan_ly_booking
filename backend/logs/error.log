@@ -4,3 +4,12 @@
 2024-12-19T21:20:30.202Z [ERROR] : Error creating log: req.get is not a function
 2024-12-19T21:20:30.877Z [ERROR] : Error creating log: req.get is not a function
 2024-12-24T00:33:32.746Z [ERROR] : Error updating room: Cast to Number failed for value "[ 2 ]" (type Array) at path "guests"
+2024-12-27T00:29:27.066Z [ERROR] : Error creating log: req.get is not a function
+2024-12-27T00:33:48.075Z [ERROR] : Error creating log: req.get is not a function
+2024-12-27T00:33:49.124Z [ERROR] : Error creating log: req.get is not a function
+2024-12-27T00:33:50.059Z [ERROR] : Error creating log: req.get is not a function
+2024-12-27T00:33:50.995Z [ERROR] : Error creating log: req.get is not a function
+2024-12-27T00:34:06.539Z [ERROR] : Error creating log: req.get is not a function
+2024-12-27T00:34:27.917Z [ERROR] : Error creating log: req.get is not a function
+2024-12-27T00:34:28.965Z [ERROR] : Error creating log: req.get is not a function
+2024-12-27T00:34:37.426Z [ERROR] : Error creating log: req.get is not a function

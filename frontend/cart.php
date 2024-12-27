@@ -39,98 +39,108 @@ $roomId = isset($_GET['id']) && !empty($_GET['id']) ? $_GET['id'] : null;
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', fetchCartData);
+    document.addEventListener('DOMContentLoaded', fetchCartData);
 
-        // Hàm lấy dữ liệu giỏ hàng
-        async function fetchCartData() {
-            try {
-                const token = sessionStorage.getItem('accessToken');
-                if (!token) {
-                    alert('Please log in to view your cart.');
-                    return;
-                }
-
-                const response = await fetch('http://localhost:5000/api/cart', {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': 'Bearer ' + token
-                    }
-                });
-
-                if (!response.ok) {
-                    throw new Error('Error fetching cart data');
-                }
-
-                const cartData = await response.json();
-                renderCart(cartData.items, cartData.createdAt);
-            } catch (error) {
-                console.error('Error:', error);
+    // Hàm lấy dữ liệu giỏ hàng
+    async function fetchCartData() {
+        try {
+            const token = sessionStorage.getItem('accessToken');
+            if (!token) {
+                alert('Please log in to view your cart.');
+                return;
             }
+
+            const response = await fetch('http://localhost:5000/api/cart', {
+                method: 'GET',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error('Error fetching cart data');
+            }
+
+            const cartData = await response.json();
+            renderCart(cartData.items, cartData.createdAt);
+        } catch (error) {
+            console.error('Error:', error);
         }
+    }
 
-        // Hàm hiển thị dữ liệu giỏ hàng
-        function renderCart(items, createdAt) {
-            const cartItemsContainer = document.getElementById('cartItems');
-            const totalPriceElement = document.getElementById('totalPrice');
-            const bookNowButton = document.getElementById('bookNow');
-            const createAtElement = document.getElementById('createAt');
+    // Hàm hiển thị dữ liệu giỏ hàng
+    function renderCart(items, createdAt) {
+        const cartItemsContainer = document.getElementById('cartItems');
+        const totalPriceElement = document.getElementById('totalPrice');
+        const bookNowButton = document.getElementById('bookNow');
+        const createAtElement = document.getElementById('createAt');
 
-            let selectedTotalPrice = 0;
+        let selectedTotalPrice = 0;
+        let selectedRoomId = null;
 
-            // Gán thời gian tạo đơn hàng
-            createAtElement.textContent = new Date(createdAt).toLocaleString();
+        // Gán thời gian tạo đơn hàng
+        createAtElement.textContent = new Date(createdAt).toLocaleString();
 
-            // Hiển thị từng item trong giỏ hàng
-            items.forEach((item, index) => {
-                // Xử lý đường dẫn ảnh
-                const imagePath = item.details.images[0].startsWith('/uploads/') ?
-                    `http://localhost:5000${item.details.images[0]}` :
-                    item.details.images[0];
+        // Hiển thị từng item trong giỏ hàng
+        items.forEach((item) => {
+            // Xử lý đường dẫn ảnh
+            const imagePath = item.details.images[0].startsWith('/uploads/') ?
+                `http://localhost:5000${item.details.images[0]}` :
+                item.details.images[0];
 
-                const cartItemHTML = `
+            const cartItemHTML = `
                 <div class="col-lg-4 col-md-6 mb-4">
                     <div class="card">
-                          <img src="${imagePath}" class="card-img-top" alt="${item.details.name}">
+                        <img src="${imagePath}" class="card-img-top" alt="${item.details.name}">
                         <div class="card-body">
                             <h5 class="card-title">${item.details.name}</h5>
                             <p class="card-text">Price: ₹${item.details.price}</p>
                             <p class="card-text">Quantity: ${item.quantity}</p>
                             <label>
-                                <input type="checkbox" class="item-checkbox" data-price="${item.details.price}">
+                                <input type="checkbox" class="item-checkbox" data-item-id="${item.itemId}" data-price="${item.details.price}">
                                 Select this item
                             </label>
                         </div>
                     </div>
                 </div>`;
-                cartItemsContainer.innerHTML += cartItemHTML;
-            });
+            cartItemsContainer.innerHTML += cartItemHTML;
+        });
 
-            // Lắng nghe sự kiện checkbox
-            cartItemsContainer.addEventListener('change', (e) => {
-                if (e.target.classList.contains('item-checkbox')) {
-                    const itemPrice = parseFloat(e.target.dataset.price);
+        // Lắng nghe sự kiện checkbox
+        cartItemsContainer.addEventListener('change', (e) => {
+            if (e.target.classList.contains('item-checkbox')) {
+                const itemPrice = parseFloat(e.target.dataset.price);
+                const itemId = e.target.dataset.itemId;
 
-                    if (e.target.checked) {
-                        selectedTotalPrice += itemPrice;
-                    } else {
-                        selectedTotalPrice -= itemPrice;
+                if (e.target.checked) {
+                    selectedTotalPrice += itemPrice;
+                    selectedRoomId = itemId;  // Cập nhật itemId khi checkbox được chọn
+                } else {
+                    selectedTotalPrice -= itemPrice;
+                    if (selectedRoomId === itemId) {
+                        selectedRoomId = null; // Nếu bỏ chọn item, xóa roomId
                     }
-
-                    // Cập nhật tổng tiền
-                    totalPriceElement.textContent = selectedTotalPrice.toFixed(2);
-
-                    // Bật/tắt nút Book Now
-                    bookNowButton.disabled = selectedTotalPrice === 0;
                 }
-            });
 
-            // Xử lý khi nhấn nút Book Now
-            bookNowButton.addEventListener('click', () => {
-                alert('Booking items with total price ₹' + selectedTotalPrice.toFixed(2));
-            });
-        }
-    </script>
+                // Cập nhật tổng tiền
+                totalPriceElement.textContent = selectedTotalPrice.toFixed(2);
 
+                // Bật/tắt nút Book Now
+                bookNowButton.disabled = selectedTotalPrice === 0;
+            }
+        });
+
+        // Xử lý khi nhấn nút Book Now
+        bookNowButton.addEventListener('click', () => {
+            if (selectedRoomId) {
+                // Chuyển hướng đến trang booking.php và truyền itemId qua query string
+                window.location.href = `booking.php?roomId=${selectedRoomId}`;
+            } else {
+                alert('Please select at least one room to book.');
+            }
+        });
+    }
+</script>
 
     <!-- Liên kết đến file JavaScript -->
     <script src="admin/js/login-register.js"></script>

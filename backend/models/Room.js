@@ -39,19 +39,19 @@ const RoomSchema = new mongoose.Schema({
   }], 
   facilities: [{ 
     type: String, // Mảng tiện nghi (Wi-Fi, máy lạnh, v.v.)
-    enum: ['Wi-Fi', 'Máy lạnh', 'Bồn tắm vòi sen', 'TV thông Minh', 'Máy sấy', 'Bàn làm việc', 'Bếp','TV thông Minh','Hệ thống điều khiển thông minh','Đồ vệ sinh cá nhân cao cấp','Két an toàn'], // Các tiện nghi có sẵn
+    enum: ['Wi-Fi', 'Máy lạnh', 'Bồn tắm vòi sen', 'TV thông Minh', 'Máy sấy', 'Bàn làm việc', 'Bếp', 'TV thông Minh', 'Hệ thống điều khiển thông minh', 'Đồ vệ sinh cá nhân cao cấp', 'Két an toàn'], // Các tiện nghi có sẵn
     trim: true 
   }],
   features: [{ 
     type: String, // Các tính năng đặc biệt của phòng
-    enum: ['View đẹp', 'Ban công', 'Bể bơi riêng', 'Jacuzzi', 'Vệ sinh miễn phí','Giường lớn','1 giường','2 giường','1 phòng' ,'2 phòng','3 phòng','2 giường','3 giường' ,'Gường lớn'], 
+    enum: ['View đẹp', 'Ban công', 'Bể bơi riêng', 'Jacuzzi', 'Vệ sinh miễn phí', 'Giường lớn', '1 giường', '2 giường', '1 phòng', '2 phòng', '3 phòng', '2 giường', '3 giường', 'Giường lớn'], 
     trim: true 
   }],
   guests: { 
     type: Number, // Số lượng khách tối đa mà phòng có thể chứa
     required: true, 
     min: [1, 'Số lượng khách không thể nhỏ hơn 1'],
-    max: [2, 'Số lượng khách không thể lớn hơn 10'] 
+    max: [10, 'Số lượng khách không thể lớn hơn 10'] 
   },
   rating: { 
     type: Number, // Đánh giá của phòng, từ 1 đến 5
@@ -59,11 +59,11 @@ const RoomSchema = new mongoose.Schema({
     min: [1, 'Đánh giá phải từ 1 đến 5'], 
     max: [5, 'Đánh giá phải từ 1 đến 5']
   },
-  bookings: [{
-    checkIn: { type: Date, required: true },
-    checkOut: { type: Date, required: true },
-    guestCount: { type: Number, required: true }
-  }]
+bookings: [{
+  startDate: { type: Date, required: true }, // Ngày bắt đầu của booking
+  endDate: { type: Date, required: true },   // Ngày kết thúc của booking
+  guestCount: { type: Number, required: true } // Số lượng khách
+}]
 }, { timestamps: true });
 
 // Thuộc tính ảo để tính số lượng phòng đã đặt
@@ -89,6 +89,16 @@ RoomSchema.pre('findOneAndUpdate', function(next) {
   }
   next();
 });
+
+// Phương thức để lấy số lượng phòng từ tính năng "features"
+RoomSchema.methods.getNumberOfRooms = function() {
+  const roomFeature = this.features.find(feature => feature.includes("phòng"));
+  if (roomFeature) {
+    const numberOfRooms = parseInt(roomFeature.replace(/[^\d]/g, ''));
+    return numberOfRooms;
+  }
+  return 0;  // Trả về 0 nếu không tìm thấy thông tin số phòng
+};
 
 // Xuất mô hình Room dưới dạng ES Module
 const Room = mongoose.model('Room', RoomSchema);

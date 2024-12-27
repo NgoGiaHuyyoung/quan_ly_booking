@@ -11,6 +11,6 @@ router.post('/createRoom', verifyToken, verifyRole(['admin']), createRoom);
 router.put('/:id', verifyToken, updateRoom);
 router.delete('/:id', verifyToken, verifyRole(['admin']), deleteRoom);
 router.put('/status/:id', verifyToken, verifyRole(['admin']), updateRoomStatus);
-router.get('/search', verifyToken, searchRooms);
+router.post('/search', verifyToken, searchRooms);
 
 export default router;  // Sử dụng export default để xuất router

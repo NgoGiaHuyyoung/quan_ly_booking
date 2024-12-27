@@ -1,6 +1,7 @@
 import Bill from '../models/Bill.js'; // Sử dụng import để đảm bảo ES Modules
 import logger from '../utils/logger.js'; // Giả sử bạn đã tạo logger (xem thêm bên dưới)
 import Payment from '../models/Payment.js';
+import axios from 'axios';
 
 // Lấy tất cả các hóa đơn
 export const getAllBills = async (req, res) => {
@@ -39,6 +40,7 @@ export const createBill = async (req, res) => {
   }
 
   try {
+    // Tạo hóa đơn mới
     const newBill = new Bill({
       invoiceNumber,
       customerId,
@@ -51,12 +53,90 @@ export const createBill = async (req, res) => {
 
     await newBill.save();
     logger.info('Bill created successfully:', newBill);
-    res.status(201).json(newBill);
+
+    // Gọi MoMo API để thực hiện thanh toán
+    const momoResponse = await axios.post('https://payment.momo.vn/api/transaction', {
+      amount: newBill.amount,
+      customerId: newBill.customerId,
+      invoiceNumber: newBill.invoiceNumber,
+      description: newBill.description,
+      returnUrl: 'https://yourapp.com/payment/return',  // URL quay lại sau khi thanh toán
+    });
+
+    // Xử lý phản hồi từ MoMo
+    if (momoResponse.data.status === 'success') {
+      // Cập nhật trạng thái hóa đơn và thông tin thanh toán
+      newBill.transactionId = momoResponse.data.transactionId;
+      newBill.paymentStatus = 'success';
+      newBill.paymentTimestamp = new Date();
+      newBill.transactionDetails = momoResponse.data.details; // Chi tiết giao dịch
+      newBill.status = 'paid'; // Cập nhật trạng thái hóa đơn
+
+      await newBill.save();
+      res.status(201).json({ message: 'Bill created and payment initiated successfully', bill: newBill });
+    } else {
+      res.status(400).json({ message: 'Failed to initiate payment with MoMo' });
+    }
   } catch (error) {
-    logger.error('Error creating bill:', error);
-    res.status(500).json({ message: 'Error creating bill.' });
+    logger.error('Error creating bill or processing payment:', error);
+    res.status(500).json({ message: 'Error creating bill or processing payment.' });
   }
 };
+
+
+
+export const handlePaymentCallback = async (req, res) => {
+  const { transactionId, status, message, billId } = req.body;
+
+  if (!transactionId || !status || !billId) {
+    return res.status(400).json({ message: 'Transaction ID, status, and bill ID are required.' });
+  }
+
+  try {
+    // Tìm hóa đơn để cập nhật
+    const bill = await Bill.findById(billId);
+    if (!bill) {
+      return res.status(404).json({ message: 'Không tìm thấy hóa đơn.' });
+    }
+
+    // Cập nhật trạng thái thanh toán cho hóa đơn
+    if (status === 'success') {
+      bill.paymentStatus = 'success';
+      bill.transactionId = transactionId;
+      bill.paymentTimestamp = new Date();
+      bill.status = 'paid'; // Cập nhật trạng thái hóa đơn thành "đã thanh toán"
+      await bill.save();
+
+      // Lưu thông tin thanh toán vào database
+      const payment = new Payment({
+        amount: bill.amount,
+        method: 'online',  // Giả sử là thanh toán online
+        status: 'completed',
+        customerId: bill.customerId,
+        serviceId: bill.serviceId,
+        transactionId: transactionId,
+        transactionDetails: message,  // Thêm thông tin chi tiết giao dịch
+        paymentStatus: 'success',
+      });
+
+      await payment.save();
+
+      return res.status(200).json({ message: 'Payment processed successfully.' });
+    } else {
+      // Cập nhật trạng thái thanh toán nếu thất bại
+      bill.paymentStatus = 'failed';
+      bill.status = 'unpaid'; // Cập nhật trạng thái hóa đơn thành "chưa thanh toán"
+      await bill.save();
+
+      // Lưu log thất bại
+      return res.status(400).json({ message: 'Payment failed.', details: message });
+    }
+  } catch (error) {
+    return res.status(500).json({ message: 'Error processing payment callback.' });
+  }
+};
+
+
 
 // Cập nhật hóa đơn
 export const updateBill = async (req, res) => {

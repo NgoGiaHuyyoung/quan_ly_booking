@@ -250,48 +250,74 @@ export const updateRoomStatus = async (req, res) => {
 // Tìm phòng
 export const searchRooms = async (req, res) => {
   try {
-    const { checkIn, checkOut, name, guests } = req.query;
+    const { startDate, endDate, name, guests, numberOfRooms } = req.body;
 
-    // Xây dựng đối tượng truy vấn để tìm kiếm
+    console.log("Received search parameters:", { startDate, endDate, name, guests, numberOfRooms });
+
+    // Kiểm tra số lượng phòng hợp lệ
+    if (!numberOfRooms || numberOfRooms <= 0) {
+      return res.status(400).send({ message: 'Số lượng phòng yêu cầu phải lớn hơn 0.' });
+    }
+
+    // Xây dựng truy vấn tìm kiếm phòng
     let query = {};
 
-    // Tìm theo tên phòng nếu có
     if (name) {
-      query.name = { $regex: name, $options: 'i' }; // Tìm kiếm tên phòng không phân biệt chữ hoa/thường
+      query.name = { $regex: name, $options: 'i' }; // Tìm kiếm tên phòng
     }
 
-    // Tìm theo số lượng khách nếu có
     if (guests) {
-      query.guests = { $gte: parseInt(guests) }; // Tìm phòng có thể chứa ít nhất số lượng khách yêu cầu
+      query.guests = { $gte: parseInt(guests) }; // Phòng có thể chứa ít nhất số khách yêu cầu
     }
 
-    // Kiểm tra ngày đặt phòng (checkIn và checkOut)
-    if (checkIn && checkOut) {
+    if (startDate && endDate) {
+      const start = new Date(startDate);
+      const end = new Date(endDate);
+
+      // Kiểm tra phòng đã được đặt trong thời gian yêu cầu
       query.bookings = {
         $not: {
           $elemMatch: {
             $or: [
-              { checkIn: { $gte: new Date(checkIn), $lt: new Date(checkOut) } },
-              { checkOut: { $gt: new Date(checkIn), $lte: new Date(checkOut) } }
+              { startDate: { $gte: start, $lt: end } },  // Phòng đã đặt trong thời gian yêu cầu
+              { endDate: { $gt: start, $lte: end } },    // Phòng đã đặt trước ngày kết thúc yêu cầu
+              { $and: [                                  // Phòng đã được đặt trùng lặp với cả startDate và endDate
+                 { startDate: { $lte: start } },
+                 { endDate: { $gte: end } }
+              ]}
             ]
           }
         }
       };
     }
 
-    // Tìm phòng dựa trên truy vấn
+    console.log("Room query:", query);
+
+    // Tìm các phòng dựa trên truy vấn
     const rooms = await Room.find(query);
 
     if (rooms.length === 0) {
       return res.status(404).send({ message: 'Không có phòng nào phù hợp.' });
     }
 
-    res.status(200).json(rooms);
+    // Lọc phòng theo số lượng phòng khách yêu cầu
+    const availableRooms = rooms.filter(room => {
+      // Kiểm tra xem số phòng yêu cầu có nhỏ hơn hoặc bằng tổng số phòng trong căn
+      return room.quantity >= numberOfRooms; 
+    });
+
+    if (availableRooms.length === 0) {
+      return res.status(404).send({ message: 'Không có đủ phòng phù hợp.' });
+    }
+
+    res.status(200).json(availableRooms);
   } catch (error) {
     console.error(`Error searching rooms: ${error.message}`);
     res.status(500).send({ message: 'Có lỗi xảy ra khi tìm phòng.' });
   }
 };
+
+
 
 
 // Chuyển phòng
