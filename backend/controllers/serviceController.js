@@ -77,3 +77,41 @@ export const deleteService = async (req, res) => {
     logger.error(`Error deleting service with ID ${serviceId}: ${error.message}`);
   }
 };
+
+
+export const saveServices = async (req, res) => {
+  try {
+      const userId = req.user.id;  // Lấy ID người dùng từ session hoặc JWT token
+      const { services, cartId } = req.body;  // services là một mảng các ID dịch vụ và giá trị
+      
+      // Tìm giỏ hàng theo userId và cartId
+      const cart = await Cart.findOne({ userId, _id: cartId });
+
+      if (!cart) {
+          return res.status(404).json({ message: 'Không tìm thấy giỏ hàng' });
+      }
+
+      // Thêm dịch vụ vào giỏ hàng
+      cart.services = services;  // Giả sử services là một mảng chứa { serviceId, price, quantity }
+
+      // Tính lại tổng giá (sản phẩm + dịch vụ)
+      const itemTotalPrice = cart.items.reduce((total, item) => total + item.price * item.quantity, 0);
+      const serviceTotalPrice = services.reduce((total, service) => total + service.price * service.quantity, 0);
+      const totalPrice = itemTotalPrice + serviceTotalPrice;
+
+      // Cập nhật tổng giá vào giỏ hàng
+      cart.totalPrice = totalPrice;
+
+      // Lưu giỏ hàng đã được cập nhật
+      await cart.save();
+
+      // Trả lại giỏ hàng đã được cập nhật
+      res.status(200).json({
+          message: 'Giỏ hàng đã được cập nhật',
+          cart: cart
+      });
+  } catch (error) {
+      console.error('Lỗi khi lưu dịch vụ vào giỏ hàng:', error);
+      res.status(500).json({ message: 'Lỗi máy chủ' });
+  }
+};

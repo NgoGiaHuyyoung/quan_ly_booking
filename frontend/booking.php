@@ -141,6 +141,7 @@ $roomId = isset($_GET['id']) && !empty($_GET['id']) ? $_GET['id'] : null;
         </div>
     </div>
 
+
     <?php require('inc/footer.php'); ?>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
@@ -237,8 +238,8 @@ $roomId = isset($_GET['id']) && !empty($_GET['id']) ? $_GET['id'] : null;
     `;
         }
 
+        // Function to redirect to the payment page
         function redirectToPayment() {
-            // Lấy giá trị từ các trường check-in, check-out và roomId
             const roomId = '<?php echo $roomId; ?>'; // Đảm bảo roomId đã được lấy từ URL PHP
             const checkInDate = document.getElementById('startDate').value;
             const checkOutDate = document.getElementById('endDate').value;
@@ -246,20 +247,18 @@ $roomId = isset($_GET['id']) && !empty($_GET['id']) ? $_GET['id'] : null;
             // Kiểm tra nếu tất cả thông tin đã được điền
             if (roomId && checkInDate && checkOutDate) {
                 // Tạo URL chuyển hướng với các tham số
-                const paymentUrl = `payment.php?roomId=${roomId}&checkIn=${checkInDate}&checkOut=${checkOutDate}`;
+                const paymentUrl = `test_qr.php?roomId=${roomId}&checkIn=${checkInDate}&checkOut=${checkOutDate}`;
                 window.location.href = paymentUrl; // Chuyển hướng đến payment.php
             } else {
                 alert('Vui lòng điền đầy đủ thông tin ngày check-in và check-out!');
             }
         }
 
-
-        // Function to send booking data to API
+        // Function to send booking data to the API and create bill
         async function submitBooking() {
-            // Lấy roomId từ URL
             const urlParams = new URLSearchParams(window.location.search);
-            const roomId = urlParams.get('roomId'); // roomId từ URL
-            console.log('Room ID:', roomId); // Log giá trị roomId
+            const roomId = urlParams.get('roomId'); // Lấy roomId từ URL
+            console.log('Room ID:', roomId);
 
             // Lấy userId từ sessionStorage
             const storedUserData = sessionStorage.getItem('user');
@@ -267,41 +266,43 @@ $roomId = isset($_GET['id']) && !empty($_GET['id']) ? $_GET['id'] : null;
             if (storedUserData) {
                 try {
                     const userData = JSON.parse(storedUserData);
-                    userId = userData.userId; // userId từ sessionStorage
-                    console.log('User ID:', userId); // Log giá trị userId
+                    userId = userData.userId;
+                    console.log('User ID:', userId);
                 } catch (error) {
                     console.error('Error parsing user data from sessionStorage:', error);
                 }
             }
+
             const token = sessionStorage.getItem('accessToken');
             if (!token) {
                 alert('Please log in to view your cart.');
                 return;
             }
+
             // Kiểm tra nếu roomId và userId hợp lệ
             if (!roomId || !userId) {
                 alert('Thông tin phòng hoặc người dùng không hợp lệ!');
-                console.log('Không có thông tin phòng hoặc người dùng hợp lệ.'); // Log lỗi nếu thiếu roomId hoặc userId
+                console.log('Không có thông tin phòng hoặc người dùng hợp lệ.');
                 return;
             }
 
             // Lấy ngày check-in và check-out
             const checkInDate = document.getElementById('startDate').value;
             const checkOutDate = document.getElementById('endDate').value;
-            console.log('Check-in Date:', checkInDate); // Log giá trị ngày check-in
-            console.log('Check-out Date:', checkOutDate); // Log giá trị ngày check-out
+            console.log('Check-in Date:', checkInDate);
+            console.log('Check-out Date:', checkOutDate);
 
             // Kiểm tra nếu ngày tháng đã được điền
             if (!checkInDate || !checkOutDate) {
                 alert('Vui lòng điền đầy đủ thông tin ngày check-in và check-out!');
-                console.log('Ngày check-in hoặc check-out không được điền đầy đủ.'); // Log nếu thiếu ngày
+                console.log('Ngày check-in hoặc check-out không được điền đầy đủ.');
                 return;
             }
 
             // Kiểm tra ngày check-out không sớm hơn ngày check-in
             if (new Date(checkInDate) >= new Date(checkOutDate)) {
                 alert('Ngày check-out phải sau ngày check-in!');
-                console.log('Ngày check-out phải sau ngày check-in.'); // Log lỗi nếu ngày check-out không hợp lệ
+                console.log('Ngày check-out phải sau ngày check-in.');
                 return;
             }
 
@@ -309,13 +310,14 @@ $roomId = isset($_GET['id']) && !empty($_GET['id']) ? $_GET['id'] : null;
             const bookingData = {
                 roomId: roomId,
                 userId: userId,
-                checkInDate: checkInDate + "T12:00:00Z", // Thêm thời gian để đảm bảo định dạng ISO hợp lệ
-                checkOutDate: checkOutDate + "T12:00:00Z" // Thêm thời gian để đảm bảo định dạng ISO hợp lệ
+                checkInDate: checkInDate + "T12:00:00Z", // Đảm bảo định dạng ISO hợp lệ
+                checkOutDate: checkOutDate + "T12:00:00Z"
             };
 
-            console.log('Booking Data:', bookingData); // Log toàn bộ dữ liệu đặt phòng
+            console.log('Booking Data:', bookingData);
 
             try {
+                // Gửi yêu cầu API để tạo booking
                 const response = await fetch('http://localhost:5000/api/bookings', {
                     method: 'POST',
                     headers: {
@@ -326,25 +328,63 @@ $roomId = isset($_GET['id']) && !empty($_GET['id']) ? $_GET['id'] : null;
                 });
 
                 const result = await response.json();
-
-                // Log kết quả trả về từ API
                 console.log('API Response:', result);
 
                 if (response.ok) {
-                    // Nếu đặt phòng thành công, chuyển hướng đến trang thanh toán
-                    const paymentUrl = `payment.php?roomId=${roomId}&checkIn=${checkInDate}&checkOut=${checkOutDate}`;
-                    console.log('Redirecting to payment page:', paymentUrl); // Log URL thanh toán
-                    window.location.href = paymentUrl;
+                    // Nếu đặt phòng thành công, tạo hóa đơn
+                    const totalPrice = sessionStorage.getItem('totalPrice');
+                    if (!totalPrice) {
+                        alert('Không có giá trị tổng hợp trong sessionStorage!');
+                        return;
+                    }
+
+                    const description = `Thanh toán cho booking ${roomId}`;
+                    const paymentDate = new Date().toISOString();
+                    const paymentMethod = 'COD'; // Phương thức thanh toán mặc định
+
+                    const billData = {
+                        customerId: userId,
+                        amount: totalPrice,
+                        description: description,
+                        paymentDate: paymentDate,
+                        status: 'pending',
+                        services: [], // Thêm dịch vụ nếu cần
+                        paymentMethod: paymentMethod
+                    };
+
+                    // Gửi yêu cầu tạo hóa đơn
+                    const billResponse = await fetch('http://localhost:5000/api/payments/bills', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': 'Bearer ' + token,
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(billData),
+                    });
+
+                    const billResult = await billResponse.json();
+                    console.log('Bill Response:', billResult);
+
+                    if (billResponse.ok && billResult.message === 'Bill created successfully.') {
+                        const billId = billResult.bill._id;
+                        // Chuyển hướng đến trang thanh toán nếu hóa đơn được tạo thành công
+                        const paymentUrl = `test_qr.php?roomId=${roomId}&checkIn=${checkInDate}&checkOut=${checkOutDate}&userId=${userId}&billId=${billId}`;
+                        console.log('Redirecting to payment page:', paymentUrl);
+                        window.location.href = paymentUrl;
+                    } else {
+                        alert('Có lỗi xảy ra khi tạo hóa đơn!');
+                    }
                 } else {
                     alert('Đặt phòng không thành công. Vui lòng thử lại sau.');
-                    console.log('Đặt phòng không thành công. Lỗi API:', result); // Log lỗi khi API không thành công
+                    console.log('Đặt phòng không thành công. Lỗi API:', result);
                 }
             } catch (error) {
                 console.error('Error booking room:', error);
                 alert('Có lỗi xảy ra khi đặt phòng. Vui lòng thử lại sau.');
-                console.log('Lỗi khi gửi yêu cầu API:', error); // Log lỗi nếu có lỗi khi gửi yêu cầu API
+                console.log('Lỗi khi gửi yêu cầu API:', error);
             }
         }
+
 
 
         // Update the button to call submitBooking

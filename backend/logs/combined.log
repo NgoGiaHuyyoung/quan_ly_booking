@@ -593,3 +593,489 @@
 2024-12-27T01:03:07.174Z [INFO] : Fetched room with ID: 676a051e077c7f2da68baf2d
 2024-12-27T01:03:42.641Z [INFO] : Request received to create new booking
 2024-12-27T01:03:42.665Z [INFO] : Successfully created new booking
+2024-12-28T04:31:47.354Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-28T04:32:10.177Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-28T04:32:17.046Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-28T04:32:19.737Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T04:32:28.336Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T04:32:48.072Z [INFO] : Request received to create new booking
+2024-12-28T04:32:48.247Z [INFO] : Successfully created new booking
+2024-12-28T04:37:14.036Z [INFO] : Request received to create new booking
+2024-12-28T04:37:14.050Z [WARN] : Room not available for booking
+2024-12-28T04:37:47.013Z [INFO] : Request received to create new booking
+2024-12-28T04:37:47.029Z [INFO] : Successfully created new booking
+2024-12-28T18:46:43.619Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-28T18:46:51.047Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-28T18:46:53.716Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T18:47:08.047Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T18:47:20.758Z [INFO] : Request received to create new booking
+2024-12-28T18:47:20.875Z [INFO] : Successfully created new booking
+2024-12-28T18:51:22.909Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T18:52:08.576Z [INFO] : Request received to create new booking
+2024-12-28T18:52:08.631Z [INFO] : Successfully created new booking
+2024-12-28T18:53:25.409Z [INFO] : Request received to create new booking
+2024-12-28T18:53:25.435Z [INFO] : Successfully created new booking
+2024-12-28T18:53:30.450Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T18:53:37.471Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T18:53:45.941Z [INFO] : Request received to create new booking
+2024-12-28T18:53:45.968Z [INFO] : Successfully created new booking
+2024-12-28T19:19:46.508Z [WARN] : Invalid room ID: null
+2024-12-28T19:19:55.993Z [WARN] : Invalid room ID: null
+2024-12-28T19:19:58.873Z [WARN] : Invalid room ID: null
+2024-12-28T19:20:04.287Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T19:22:03.906Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T20:17:39.662Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T20:22:15.295Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T20:25:57.572Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T20:27:20.659Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-28T20:27:22.288Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-28T20:27:33.886Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-28T20:27:35.286Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-28T20:28:19.388Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T20:30:40.471Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-28T20:30:40.492Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T20:31:41.604Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T20:31:42.062Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-28T20:33:12.396Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T20:33:12.459Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-28T20:36:35.343Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T20:36:35.389Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-28T20:37:04.444Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T20:37:04.452Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-28T20:39:12.946Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T20:39:13.179Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-28T20:39:44.271Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T20:39:44.456Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-28T20:49:25.432Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T20:49:25.437Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-28T20:50:59.917Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T20:51:21.091Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T20:51:39.220Z [INFO] : Fetched room with ID: 676a0554077c7f2da68baf30
+2024-12-28T20:54:30.163Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-28T21:20:49.593Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-28T21:20:54.694Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-30T21:46:57.801Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-30T21:46:57.817Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-30T21:47:01.483Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-30T21:47:04.168Z [INFO] : Fetched room with ID: 676a051e077c7f2da68baf2d
+2024-12-30T21:47:11.270Z [INFO] : Fetched room with ID: 676a051e077c7f2da68baf2d
+2024-12-30T21:47:37.207Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-30T21:47:54.292Z [INFO] : Fetched room with ID: 672720674bdfa074ba7944e8
+2024-12-30T21:47:59.547Z [INFO] : Fetched room with ID: 672720674bdfa074ba7944e8
+2024-12-30T21:48:01.601Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-30T21:48:05.344Z [INFO] : Fetched room with ID: 676a02fc077c7f2da68baf13
+2024-12-30T22:56:13.907Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-30T22:56:17.515Z [INFO] : Fetched room with ID: 676a02fc077c7f2da68baf13
+2024-12-30T22:56:29.452Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-30T22:57:55.191Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-30T22:57:58.389Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-30T23:06:29.167Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-30T23:06:36.224Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2024-12-30T23:21:57.537Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-30T23:22:00.980Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-30T23:29:48.377Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-30T23:29:51.095Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-30T23:31:56.688Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-30T23:31:58.291Z [INFO] : Fetched room with ID: 67412b57b0c43f168baec555
+2024-12-30T23:32:03.838Z [INFO] : Fetched room with ID: 676a02fc077c7f2da68baf13
+2024-12-30T23:49:06.025Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-30T23:50:03.832Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-31T00:00:20.831Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-31T00:05:14.449Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-31T00:09:02.605Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-31T00:09:08.365Z [WARN] : Invalid room ID: null
+2024-12-31T00:09:20.130Z [WARN] : Invalid room ID: null
+2024-12-31T00:10:08.002Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-31T00:10:46.132Z [INFO] : Successfully retrieved all services, count: 3
+2024-12-31T00:10:51.876Z [INFO] : Fetched rooms with pagination and status counts
+2024-12-31T00:10:54.358Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T00:11:11.698Z [WARN] : Invalid room ID: null
+2024-12-31T00:11:49.123Z [WARN] : Invalid room ID: null
+2024-12-31T00:12:16.626Z [INFO] : Fetched room with ID: 676a051e077c7f2da68baf2d
+2024-12-31T00:13:47.314Z [WARN] : Invalid room ID: null
+2024-12-31T00:13:53.636Z [INFO] : Fetched room with ID: 676a051e077c7f2da68baf2d
+2024-12-31T00:32:17.936Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T00:32:56.013Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T00:44:01.917Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T00:44:08.188Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T00:47:37.314Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T00:48:03.956Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T00:51:00.908Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T00:52:15.329Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T01:00:13.548Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T01:01:01.342Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T01:01:14.904Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T01:01:24.754Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T01:01:30.699Z [WARN] : Invalid room ID: null
+2024-12-31T01:02:05.503Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T01:02:13.423Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T01:02:22.753Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T01:02:32.752Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T01:02:38.925Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T01:21:51.117Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T01:21:58.235Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T01:22:17.183Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T01:23:18.884Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T01:34:25.053Z [ERROR] : Error creating bill or processing payment: Bill validation failed: status: `Unpaid` is not a valid enum value for path `status`.
+2024-12-31T01:36:01.317Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV113226" }
+2024-12-31T01:36:32.330Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV113226" }
+2024-12-31T01:36:33.370Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV113226" }
+2024-12-31T01:36:56.248Z [INFO] : Bill created successfully:
+2024-12-31T01:36:56.415Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T01:36:57.679Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV113221" }
+2024-12-31T01:37:05.282Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV113221" }
+2024-12-31T01:37:47.639Z [ERROR] : Error creating bill or processing payment: Bill validation failed: status: `pending` is not a valid enum value for path `status`.
+2024-12-31T01:37:49.163Z [ERROR] : Error creating bill or processing payment: Bill validation failed: status: `pending` is not a valid enum value for path `status`.
+2024-12-31T01:38:00.721Z [ERROR] : Error creating bill or processing payment: Bill validation failed: status: `pending` is not a valid enum value for path `status`.
+2024-12-31T01:38:02.058Z [ERROR] : Error creating bill or processing payment: Bill validation failed: status: `pending` is not a valid enum value for path `status`.
+2024-12-31T01:39:35.722Z [ERROR] : Error creating bill or processing payment: Bill validation failed: status: `pending` is not a valid enum value for path `status`.
+2024-12-31T01:39:36.656Z [ERROR] : Error creating bill or processing payment: Bill validation failed: status: `pending` is not a valid enum value for path `status`.
+2024-12-31T01:39:37.527Z [ERROR] : Error creating bill or processing payment: Bill validation failed: status: `pending` is not a valid enum value for path `status`.
+2024-12-31T01:41:25.048Z [ERROR] : Error creating bill or processing payment: Bill validation failed: status: `pending` is not a valid enum value for path `status`.
+2024-12-31T01:42:10.595Z [INFO] : Bill created successfully:
+2024-12-31T01:42:10.752Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T01:42:11.729Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240101" }
+2024-12-31T01:42:12.841Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240101" }
+2024-12-31T01:42:13.863Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240101" }
+2024-12-31T01:44:57.783Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240101" }
+2024-12-31T01:44:59.607Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240101" }
+2024-12-31T17:17:51.886Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T17:18:10.165Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T17:19:10.254Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2024-12-31T17:20:48.048Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240101" }
+2024-12-31T17:20:49.673Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240101" }
+2024-12-31T17:24:07.598Z [INFO] : Bill created successfully:
+2024-12-31T17:24:07.836Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T17:24:09.305Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240111" }
+2024-12-31T17:24:12.422Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240111" }
+2024-12-31T17:24:44.321Z [INFO] : Bill created successfully:
+2024-12-31T17:24:44.401Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T17:24:45.769Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240999" }
+2024-12-31T17:24:47.456Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240999" }
+2024-12-31T17:25:54.119Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240999" }
+2024-12-31T17:26:10.042Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240999" }
+2024-12-31T17:26:11.261Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240999" }
+2024-12-31T17:27:12.290Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240999" }
+2024-12-31T17:27:13.942Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240999" }
+2024-12-31T17:27:16.872Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240999" }
+2024-12-31T17:31:30.434Z [WARN] : Invoice number INV20240999 already exists.
+2024-12-31T17:34:37.827Z [INFO] : Bill created successfully:
+2024-12-31T17:34:38.050Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T17:34:39.646Z [WARN] : Invoice number INV20240999 already exists.
+2024-12-31T19:44:20.787Z [INFO] : Bill created successfully:
+2024-12-31T19:44:20.956Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T19:44:23.052Z [INFO] : Bill created successfully:
+2024-12-31T19:44:23.065Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T19:44:37.085Z [INFO] : Bill created successfully:
+2024-12-31T19:44:37.151Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T19:58:37.117Z [INFO] : Bill created successfully:
+2024-12-31T19:58:37.267Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:06:27.945Z [INFO] : Bill created successfully:
+2024-12-31T20:06:28.101Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:39:40.331Z [INFO] : Bill created successfully:
+2024-12-31T20:39:40.478Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:41:06.438Z [INFO] : Bill created successfully:
+2024-12-31T20:41:06.515Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:41:08.361Z [INFO] : Bill created successfully:
+2024-12-31T20:41:08.376Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:42:06.142Z [INFO] : Bill created successfully:
+2024-12-31T20:42:06.334Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:42:50.222Z [INFO] : Bill created successfully:
+2024-12-31T20:42:50.295Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:42:59.562Z [INFO] : Bill created successfully:
+2024-12-31T20:42:59.630Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:44:21.821Z [INFO] : Bill created successfully:
+2024-12-31T20:44:21.886Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:44:23.067Z [INFO] : Bill created successfully:
+2024-12-31T20:44:23.077Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:46:41.803Z [INFO] : Bill created successfully:
+2024-12-31T20:46:42.006Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:49:12.120Z [INFO] : Bill created successfully:
+2024-12-31T20:49:12.316Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:49:22.620Z [INFO] : Bill created successfully:
+2024-12-31T20:49:22.682Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:55:59.159Z [INFO] : Bill created successfully:
+2024-12-31T20:55:59.375Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T20:57:41.994Z [INFO] : Bill created successfully:
+2024-12-31T20:57:42.077Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T20:57:43.308Z [INFO] : Bill created successfully:
+2024-12-31T20:57:43.326Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T20:57:49.365Z [INFO] : Bill created successfully:
+2024-12-31T20:57:49.438Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T20:58:41.178Z [INFO] : Bill created successfully:
+2024-12-31T20:58:41.246Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T20:58:42.233Z [INFO] : Bill created successfully:
+2024-12-31T20:58:42.249Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T20:58:43.140Z [INFO] : Bill created successfully:
+2024-12-31T20:58:43.154Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T21:05:22.122Z [INFO] : Bill created successfully:
+2024-12-31T21:05:22.306Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T21:11:50.440Z [INFO] : Bill created successfully:
+2024-12-31T21:11:50.594Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T21:11:51.619Z [INFO] : Bill created successfully:
+2024-12-31T21:11:51.636Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T21:12:04.555Z [INFO] : Bill created successfully:
+2024-12-31T21:12:04.626Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T21:19:49.341Z [INFO] : Bill created successfully:
+2024-12-31T21:19:49.419Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2025-01-01T15:06:07.475Z [INFO] : Bill created successfully:
+2025-01-01T15:06:12.928Z [INFO] : Bill created successfully:
+2025-01-01T15:13:45.900Z [INFO] : Bill created successfully:
+2025-01-01T15:20:29.248Z [INFO] : Bill created successfully:
+2025-01-01T15:20:49.643Z [INFO] : Bill created successfully:
+2025-01-01T15:47:04.555Z [INFO] : Bill created successfully:
+2025-01-01T16:40:59.934Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T16:49:25.351Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T17:13:36.769Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T17:50:04.170Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T17:50:18.927Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T17:50:26.230Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T17:55:24.603Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T17:56:16.333Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T17:56:16.709Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T18:00:28.315Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T18:14:29.361Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T18:14:36.138Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T18:15:12.391Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T18:24:27.366Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T18:27:08.223Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T18:27:14.500Z [INFO] : Bill created successfully:
+2025-01-01T19:40:20.919Z [INFO] : Fetched rooms with pagination and status counts
+2025-01-01T19:40:24.461Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T19:40:30.040Z [INFO] : Bill created successfully:
+2025-01-01T19:46:09.113Z [INFO] : Fetched rooms with pagination and status counts
+2025-01-01T19:46:22.472Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T19:46:37.783Z [INFO] : Bill created successfully:
+2025-01-01T19:49:52.520Z [WARN] : Bill not found with ID: 673b72e619c766c5c127f18f
+2025-01-01T19:49:55.458Z [WARN] : Bill not found with ID: 673b72e619c766c5c127f18f
+2025-01-01T19:49:56.471Z [WARN] : Bill not found with ID: 673b72e619c766c5c127f18f
+2025-01-01T20:04:32.842Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:13:19.553Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:15:30.673Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:17:15.426Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:17:18.854Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:18:25.385Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:18:29.888Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:19:02.465Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:20:12.030Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:21:04.262Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:21:09.087Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:28:15.712Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:28:51.466Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:33:25.714Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:33:44.288Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:34:06.682Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:34:09.883Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:34:10.535Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:34:13.382Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:34:14.771Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:34:26.194Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:34:51.671Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:34:56.204Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:38:33.163Z [INFO] : Fetched rooms with pagination and status counts
+2025-01-01T20:38:38.187Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:38:45.040Z [INFO] : Fetched room with ID: 676a02fc077c7f2da68baf13
+2025-01-01T20:40:56.972Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:41:00.792Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:41:01.132Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:41:01.542Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:41:02.203Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:41:36.603Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:41:45.280Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-01T20:41:48.029Z [INFO] : Fetched rooms with pagination and status counts
+2025-01-01T20:41:56.282Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T20:42:09.910Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T20:46:28.928Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T20:46:50.478Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T20:46:55.771Z [INFO] : Bill created successfully:
+2025-01-01T20:46:55.972Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T20:48:09.881Z [INFO] : Fetched rooms with pagination and status counts
+2025-01-01T20:48:12.643Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T20:48:39.669Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T20:48:45.491Z [INFO] : Bill created successfully:
+2025-01-01T20:48:45.967Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T20:52:33.313Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T20:52:37.299Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T20:54:38.646Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T20:54:55.086Z [INFO] : Bill created successfully:
+2025-01-01T20:55:26.576Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T20:59:44.503Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:03:08.837Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:04:12.170Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:04:16.119Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:04:16.567Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:04:16.862Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:04:42.252Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:10:39.856Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:13:39.254Z [INFO] : Fetched rooms with pagination and status counts
+2025-01-01T21:13:43.114Z [INFO] : Fetched room with ID: 676a02fc077c7f2da68baf13
+2025-01-01T21:14:10.620Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:14:16.842Z [INFO] : Bill created successfully:
+2025-01-01T21:19:42.921Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:21:10.366Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:21:13.604Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:21:13.895Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:21:14.140Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:21:14.298Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:21:14.539Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:22:34.096Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:23:32.056Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:40:06.090Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:40:13.036Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:40:13.799Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:40:25.190Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:40:37.134Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:41:04.519Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:42:52.522Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:43:52.143Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:44:33.663Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:44:40.048Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:44:45.398Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:45:23.500Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:45:44.800Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:47:36.811Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:48:06.600Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:48:32.666Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:48:45.506Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:51:39.827Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:52:22.714Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:53:46.809Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:54:05.197Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:55:56.450Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:55:59.625Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:56:00.135Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:56:00.506Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:56:00.750Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:56:03.960Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:57:38.217Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:57:51.813Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:57:54.707Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:58:01.722Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:58:26.592Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:58:47.719Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T21:58:48.886Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T22:01:42.603Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T22:02:29.763Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T22:03:34.270Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T22:04:47.803Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T22:05:00.778Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T22:05:27.112Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T22:09:36.273Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T22:10:00.790Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T22:10:18.709Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T22:14:10.197Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T22:14:40.291Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T22:14:48.956Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T22:15:14.769Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T22:15:34.740Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-01T22:15:40.580Z [INFO] : Bill created successfully:
+2025-01-01T22:15:40.765Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:24:35.491Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:24:43.701Z [INFO] : Bill created successfully:
+2025-01-02T01:24:43.915Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:27:37.788Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:27:40.130Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:27:43.962Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:30:14.553Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:30:16.244Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:30:40.364Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:30:43.020Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:30:43.401Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:30:43.941Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:30:44.348Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:30:44.656Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:30:44.856Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:30:45.225Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:30:45.432Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:30:45.707Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:30:51.054Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:31:03.882Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-02T01:31:12.453Z [INFO] : Fetched room with ID: 676a043b077c7f2da68baf20
+2025-01-02T01:31:18.136Z [INFO] : Fetched room with ID: 676a02fc077c7f2da68baf13
+2025-01-02T01:31:23.905Z [INFO] : Bill created successfully:
+2025-01-02T01:31:24.125Z [INFO] : Fetched room with ID: 676a02fc077c7f2da68baf13
+2025-01-02T01:31:54.650Z [INFO] : Fetched room with ID: 676a02fc077c7f2da68baf13
+2025-01-02T01:31:55.723Z [INFO] : Fetched room with ID: 676a02fc077c7f2da68baf13
+2025-01-02T01:31:56.305Z [INFO] : Fetched room with ID: 676a02fc077c7f2da68baf13
+2025-01-02T01:31:56.698Z [INFO] : Fetched room with ID: 676a02fc077c7f2da68baf13
+2025-01-02T01:31:58.411Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:31:58.716Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:31:59.461Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:32:24.647Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:32:25.976Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:32:28.138Z [INFO] : Fetched room with ID: 676a02fc077c7f2da68baf13
+2025-01-02T01:32:28.407Z [INFO] : Fetched room with ID: 676a02fc077c7f2da68baf13
+2025-01-02T01:32:28.826Z [INFO] : Fetched room with ID: 676a02fc077c7f2da68baf13
+2025-01-02T01:32:29.271Z [INFO] : Fetched room with ID: 676a02fc077c7f2da68baf13
+2025-01-02T01:32:29.922Z [INFO] : Fetched room with ID: 676a02fc077c7f2da68baf13
+2025-01-02T01:32:30.350Z [INFO] : Fetched room with ID: 676a02fc077c7f2da68baf13
+2025-01-02T01:34:25.211Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:34:25.755Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:34:26.313Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:34:26.870Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:34:27.127Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:34:27.567Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:34:27.912Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:34:28.266Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:34:28.531Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:34:28.977Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:35:12.702Z [INFO] : Fetched rooms with pagination and status counts
+2025-01-02T01:35:16.022Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:35:25.916Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:35:42.440Z [INFO] : Bill created successfully:
+2025-01-02T01:35:42.678Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:36:20.572Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:36:34.878Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:36:57.868Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:37:04.991Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:37:10.931Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:37:18.280Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:37:18.669Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:37:25.779Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:37:27.021Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:38:29.508Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:38:31.574Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:41:33.131Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:42:06.272Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:48:11.942Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:51:37.521Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:55:35.289Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:55:37.399Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T01:58:49.005Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:01:46.471Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:01:46.868Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:05:44.466Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:07:58.798Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:08:03.066Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:08:03.419Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:08:03.687Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:08:03.863Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:08:04.243Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:08:13.934Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:08:15.827Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:08:16.277Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:08:17.893Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:10:34.555Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:10:49.023Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:10:50.724Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:10:53.165Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:10:53.694Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:10:54.229Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:10:57.985Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:10:58.485Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:10:59.194Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:11:00.468Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:11:34.084Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:11:35.086Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:11:37.183Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:11:37.929Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:11:38.693Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:11:39.599Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:11:42.137Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:11:42.898Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:11:49.391Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:11:50.058Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:12:34.614Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:12:35.249Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:13:33.358Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d
+2025-01-02T02:26:11.100Z [INFO] : Fetched room with ID: 675ccd3350d6b453b90cc64d

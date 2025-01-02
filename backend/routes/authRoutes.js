@@ -32,7 +32,7 @@ router.post(
   '/forgot-password',
   [body('email').isEmail().withMessage('Invalid email format.')],
   validate,
-  forgotPassword
+  forgotPassword  
 ); 
 router.post(
   '/reset-password/:token',

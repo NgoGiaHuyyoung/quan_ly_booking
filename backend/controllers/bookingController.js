@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import Booking from '../models/Booking.js';
+import  Voucher  from '../models/Voucher.js'; 
 import Room from '../models/Room.js';
 import User from '../models/User.js';
 import logger from '../utils/logger.js';  // Import logger
@@ -71,53 +72,74 @@ export const getBookingById = async (req, res) => {
 
 // Tạo đặt phòng mới
 export const createBooking = async (req, res) => {
-  const { roomId, userId, checkInDate, checkOutDate } = req.body;
+  const { roomId, userId, checkInDate, checkOutDate, numberOfRooms, selectedServices, voucherCode } = req.body;
   const startDate = new Date(checkInDate);
   const endDate = new Date(checkOutDate);
 
-  logger.info('Request received to create new booking', { roomId, userId, checkInDate, checkOutDate });
-
-  if (isNaN(startDate.getTime()) || isNaN(endDate.getTime())) {
-    logger.warn('Invalid date format', { checkInDate, checkOutDate });
-    return res.status(400).json({ message: 'Ngày giờ không hợp lệ.' });
-  }
-
-  if (startDate >= endDate) {
-    logger.warn('Invalid date range', { startDate, endDate });
-    return res.status(400).json({ message: 'Ngày trả phòng phải sau ngày nhận phòng.' });
-  }
-
   try {
+    // Kiểm tra sự tồn tại của phòng và người dùng
     const roomExists = await Room.findById(roomId);
     if (!roomExists) {
-      logger.warn('Room not found', { roomId });
       return res.status(404).json({ message: 'Room ID không tồn tại.' });
     }
 
     const userExists = await User.findById(userId);
     if (!userExists) {
-      logger.warn('User not found', { userId });
       return res.status(404).json({ message: 'User ID không tồn tại.' });
     }
 
-    const isAvailable = await Booking.isRoomAvailable(new mongoose.Types.ObjectId(roomId), startDate, endDate);
+    // Kiểm tra tính khả dụng của phòng
+    const isAvailable = await Booking.isRoomAvailable(new mongoose.Types.ObjectId(roomId), startDate, endDate, numberOfRooms);
     if (!isAvailable) {
-      logger.warn('Room not available for booking', { roomId, startDate, endDate });
       return res.status(400).json({ message: 'Phòng không khả dụng trong khoảng thời gian này.' });
     }
 
+    // Tính giá trị tiền phòng cho số lượng phòng
+    const roomPrice = roomExists.price * numberOfRooms;
+
+    // Tính tiền dịch vụ
+    let serviceTotal = 0;
+    if (selectedServices && selectedServices.length > 0) {
+      for (const serviceId of selectedServices) {
+        const service = await Service.findById(serviceId); // Lấy thông tin dịch vụ
+        if (service) {
+          serviceTotal += service.price; // Cộng tiền dịch vụ vào tổng
+        }
+      }
+    }
+
+    // Kiểm tra voucher và áp dụng giảm giá
+    let discount = 0;
+    if (voucherCode) {
+      const voucher = await Voucher.findOne({ code: voucherCode });
+      if (voucher && voucher.isActive && new Date() < new Date(voucher.expirationDate)) {
+        discount = voucher.discountPercentage ? roomPrice * (voucher.discountPercentage / 100) : voucher.discountAmount;
+      } else {
+        return res.status(400).json({ message: 'Voucher không hợp lệ hoặc đã hết hạn.' });
+      }
+    }
+
+    // Tính tổng tiền
+    const totalPrice = roomPrice + serviceTotal - discount;
+
+    // Tạo một đơn đặt phòng mới
     const newBooking = new Booking({
       room: new mongoose.Types.ObjectId(roomId),
       customer: new mongoose.Types.ObjectId(userId),
       startDate,
-      endDate
+      endDate,
+      numberOfRooms,
+      selectedServices,
+      voucherCode,
+      totalPrice,
+      discount,
+      serviceTotal,
+      status: 'pending',
     });
 
     await newBooking.save();
     res.status(201).json(newBooking);
-    logger.info('Successfully created new booking', { newBooking });
   } catch (error) {
-    logger.error('Error creating booking', { error: error.message });
     res.status(500).json({ message: error.message });
   }
 };

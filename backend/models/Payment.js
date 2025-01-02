@@ -1,4 +1,3 @@
-// models/Payment.js
 import mongoose from 'mongoose';
 
 const paymentSchema = new mongoose.Schema({
@@ -13,8 +12,8 @@ const paymentSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['pending', 'completed', 'failed'],
-    default: 'pending',
+    enum: ['pending', 'unpaid', 'refunded'],
+    default: 'pending', // Mặc định là 'pending'
   },
   customerId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -28,7 +27,7 @@ const paymentSchema = new mongoose.Schema({
   },
   paymentDate: {
     type: Date,
-    default: Date.now,
+    default: Date.now, // Mặc định là thời gian hiện tại
   },
 });
 

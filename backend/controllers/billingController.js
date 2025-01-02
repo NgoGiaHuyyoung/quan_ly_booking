@@ -1,7 +1,20 @@
 import Bill from '../models/Bill.js'; // Sử dụng import để đảm bảo ES Modules
 import logger from '../utils/logger.js'; // Giả sử bạn đã tạo logger (xem thêm bên dưới)
 import Payment from '../models/Payment.js';
+import Service from '../models/Service.js';
+import Voucher from '../models/Voucher.js';
+import crypto from 'crypto';
 import axios from 'axios';
+import { partnerCode, accessKey, secretKey } from '../config/momoConfig.js';
+console.log('MoMo Config:', { partnerCode, accessKey, secretKey });
+
+// Hàm tạo số hóa đơn duy nhất
+const generateInvoiceNumber = () => {
+  const currentDate = new Date();
+  const formattedDate = currentDate.toISOString().slice(0, 10).replace(/-/g, ''); // YYYYMMDD
+  const randomSuffix = Math.floor(1000 + Math.random() * 9000); // 4 chữ số ngẫu nhiên
+  return `INV${formattedDate}${randomSuffix}`;  // Ví dụ: INV202401011234
+};
 
 // Lấy tất cả các hóa đơn
 export const getAllBills = async (req, res) => {
@@ -30,112 +43,291 @@ export const getBillById = async (req, res) => {
   }
 };
 
-// Tạo hóa đơn mới
-export const createBill = async (req, res) => {
-  const { invoiceNumber, customerId, amount, description, paymentDate, status, services } = req.body;
+// Hàm tạo chữ ký
+const createSignature = ({ partnerCode, accessKey, secretKey, orderId, amount, orderInfo, returnUrl, notifyUrl, requestType, ipnUrl, extraData }) => {
+  const rawSignature = `partnerCode=${partnerCode}&accessKey=${accessKey}&orderId=${orderId}&amount=${amount}&orderInfo=${orderInfo}&returnUrl=${returnUrl}&notifyUrl=${notifyUrl}&requestType=${requestType}&ipnUrl=${ipnUrl}&extraData=${extraData}`;
+  return crypto.createHmac('sha256', secretKey).update(rawSignature).digest('hex');
+};
 
-  if (!invoiceNumber || !customerId || !amount || !description) {
-    logger.warn('Required fields missing in createBill request.');
-    return res.status(400).json({ message: 'invoiceNumber, customerId, amount, and description are required.' });
+
+
+export const createBill = async (req, res) => {
+  const { customerId, amount, description, paymentDate, status, services, paymentMethod } = req.body;
+
+  if (!customerId || !amount || !paymentMethod) {
+    return res.status(400).json({
+      message: 'customerId, amount, and paymentMethod are required.',
+    });
   }
 
   try {
+    const generateInvoiceNumber = () => {
+      const date = new Date();
+      const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+      return `INV${date.toISOString().slice(0, 10).replace(/-/g, '')}${randomSuffix}`;
+    };
+
+    const generateTransactionId = () => {
+      const randomId = Math.random().toString(36).substr(2, 9).toUpperCase();
+      return `TXN${Date.now()}${randomId}`;
+    };
+
+    const invoiceNumber = generateInvoiceNumber();
+
+    const validPaymentMethods = ['COD', 'Coin Blockchain'];
+    if (!validPaymentMethods.includes(paymentMethod)) {
+      return res.status(400).json({
+        message: `Invalid payment method. Accepted methods are: ${validPaymentMethods.join(', ')}.`,
+      });
+    }
+
     // Tạo hóa đơn mới
     const newBill = new Bill({
       invoiceNumber,
       customerId,
       amount,
-      description,
-      paymentDate,
-      status,
-      services
+      description: description || 'No description provided',
+      paymentDate: paymentDate || new Date(),
+      status: status || 'unpaid',
+      services: services || [],
+      paymentMethod,
+      transactionId: generateTransactionId(), // Tạo mã giao dịch ngẫu nhiên
+      paymentStatus: 'pending', // Trạng thái mặc định
+      paymentTimestamp: new Date(), // Lấy thời gian hiện tại
+      transactionDetails: 'Transaction details not provided.', // Mặc định nội dung giao dịch
     });
 
+    // Lưu hóa đơn vào cơ sở dữ liệu
     await newBill.save();
     logger.info('Bill created successfully:', newBill);
 
-    // Gọi MoMo API để thực hiện thanh toán
-    const momoResponse = await axios.post('https://payment.momo.vn/api/transaction', {
-      amount: newBill.amount,
-      customerId: newBill.customerId,
-      invoiceNumber: newBill.invoiceNumber,
-      description: newBill.description,
-      returnUrl: 'https://yourapp.com/payment/return',  // URL quay lại sau khi thanh toán
+    res.status(201).json({
+      message: 'Bill created successfully.',
+      bill: newBill,
     });
-
-    // Xử lý phản hồi từ MoMo
-    if (momoResponse.data.status === 'success') {
-      // Cập nhật trạng thái hóa đơn và thông tin thanh toán
-      newBill.transactionId = momoResponse.data.transactionId;
-      newBill.paymentStatus = 'success';
-      newBill.paymentTimestamp = new Date();
-      newBill.transactionDetails = momoResponse.data.details; // Chi tiết giao dịch
-      newBill.status = 'paid'; // Cập nhật trạng thái hóa đơn
-
-      await newBill.save();
-      res.status(201).json({ message: 'Bill created and payment initiated successfully', bill: newBill });
-    } else {
-      res.status(400).json({ message: 'Failed to initiate payment with MoMo' });
-    }
   } catch (error) {
-    logger.error('Error creating bill or processing payment:', error);
-    res.status(500).json({ message: 'Error creating bill or processing payment.' });
+    logger.error('Error creating bill:', error);
+    res.status(500).json({
+      message: 'Internal server error.',
+      error: error.message,
+    });
   }
 };
 
+export const payment = async (req, res) => {
+  const { customerId, amount, paymentMethod, serviceId, voucherCode } = req.body;
 
-
-export const handlePaymentCallback = async (req, res) => {
-  const { transactionId, status, message, billId } = req.body;
-
-  if (!transactionId || !status || !billId) {
-    return res.status(400).json({ message: 'Transaction ID, status, and bill ID are required.' });
+  // Kiểm tra các trường bắt buộc
+  if (!customerId || !amount || !paymentMethod) {
+    return res.status(400).json({
+      message: 'customerId, amount, and paymentMethod are required.',
+    });
   }
 
   try {
-    // Tìm hóa đơn để cập nhật
-    const bill = await Bill.findById(billId);
-    if (!bill) {
-      return res.status(404).json({ message: 'Không tìm thấy hóa đơn.' });
-    }
+    const generateInvoiceNumber = () => {
+      const date = new Date();
+      const randomSuffix = Math.floor(1000 + Math.random() * 9000);
+      return `INV${date.toISOString().slice(0, 10).replace(/-/g, '')}${randomSuffix}`;
+    };
+    const invoiceNumber = generateInvoiceNumber();
 
-    // Cập nhật trạng thái thanh toán cho hóa đơn
-    if (status === 'success') {
-      bill.paymentStatus = 'success';
-      bill.transactionId = transactionId;
-      bill.paymentTimestamp = new Date();
-      bill.status = 'paid'; // Cập nhật trạng thái hóa đơn thành "đã thanh toán"
-      await bill.save();
+    const generateTransactionId = () => {
+      const randomId = Math.random().toString(36).substr(2, 9).toUpperCase();
+      return `TXN${Date.now()}${randomId}`;
+    };
 
-      // Lưu thông tin thanh toán vào database
-      const payment = new Payment({
-        amount: bill.amount,
-        method: 'online',  // Giả sử là thanh toán online
-        status: 'completed',
-        customerId: bill.customerId,
-        serviceId: bill.serviceId,
-        transactionId: transactionId,
-        transactionDetails: message,  // Thêm thông tin chi tiết giao dịch
-        paymentStatus: 'success',
-      });
+    const transactionId = generateTransactionId();
+    const paymentTimestamp = new Date();
 
-      await payment.save();
+    let transactionDetails = {};
 
-      return res.status(200).json({ message: 'Payment processed successfully.' });
+    // Xử lý chi tiết phương thức thanh toán
+    if (paymentMethod === 'cod') {
+      transactionDetails = { note: 'Payment upon delivery' };
+    } else if (paymentMethod === 'coin') {
+      transactionDetails = {
+        walletAddress: '0xYourBlockchainWalletAddress',
+        note: 'Send coins to the above address',
+      };
     } else {
-      // Cập nhật trạng thái thanh toán nếu thất bại
-      bill.paymentStatus = 'failed';
-      bill.status = 'unpaid'; // Cập nhật trạng thái hóa đơn thành "chưa thanh toán"
-      await bill.save();
-
-      // Lưu log thất bại
-      return res.status(400).json({ message: 'Payment failed.', details: message });
+      return res.status(400).json({ message: 'Unsupported payment method.' });
     }
+
+    // Truy vấn thông tin dịch vụ nếu serviceId được cung cấp
+    let serviceDetails = [];
+    if (serviceId && serviceId.length > 0) {
+      const services = await Service.find({ '_id': { $in: serviceId } });
+
+      if (services.length === 0) {
+        return res.status(404).json({ message: 'No services found with the provided serviceId(s).' });
+      }
+
+      serviceDetails = services.map(service => ({
+        name: service.name,
+        price: service.price,
+      }));
+    }
+
+    // Kiểm tra và áp dụng mã giảm giá nếu voucherCode được cung cấp
+    let discountAmount = 0;
+    if (voucherCode) {
+      const voucher = await Voucher.findOne({ code: voucherCode });
+
+      if (!voucher || !voucher.isActive || new Date(voucher.expirationDate) < new Date()) {
+        return res.status(400).json({ message: 'Invalid or expired voucher.' });
+      }
+
+      // Áp dụng giảm giá
+      discountAmount = (amount * voucher.discountPercentage) / 100;
+    }
+
+    const finalAmount = amount - discountAmount;
+
+    // Tạo hóa đơn mới với thông tin thanh toán
+    const newBill = new Bill({
+      invoiceNumber,
+      customerId,
+      amount: finalAmount,
+      paymentMethod,
+      description: 'No description provided', // Mặc định
+      paymentDate: paymentTimestamp, // Thời gian thanh toán
+      services: serviceDetails, // Đưa thông tin dịch vụ (nếu có)
+      transactionId, // Mã giao dịch
+      paymentStatus: 'pending', // Trạng thái thanh toán
+      paymentTimestamp, // Thời gian thanh toán
+      transactionDetails, // Chi tiết giao dịch
+      voucherCode: voucherCode || null, // Lưu mã voucher đã sử dụng (nếu có)
+      discountAmount, // Số tiền giảm giá (nếu có)
+    });
+
+    // Lưu hóa đơn vào cơ sở dữ liệu
+    await newBill.save();
+
+    res.status(201).json({
+      message: 'Payment initiated successfully.',
+      bill: newBill,
+      transactionDetails,
+      finalAmount,
+      discountAmount,
+    });
   } catch (error) {
-    return res.status(500).json({ message: 'Error processing payment callback.' });
+    console.error('Error initiating payment:', error);
+    res.status(500).json({ message: 'Internal server error.', error: error.message });
   }
 };
 
+
+
+
+
+
+
+
+export const handlePayment = async (req, res) => {
+  const { transactionId, paymentStatus, paymentTimestamp, signature, orderId } = req.body;
+
+  // Kiểm tra các tham số bắt buộc
+  if (!transactionId || !paymentStatus || !orderId || !signature) {
+    return res.status(400).json({
+      message: 'Missing required parameters in payment callback.',
+    });
+  }
+
+  try {
+    // Lấy thông tin hóa đơn từ database
+    const bill = await Bill.findOne({ invoiceNumber: orderId });
+    if (!bill) {
+      return res.status(404).json({ message: 'Bill not found for given order ID.' });
+    }
+
+    // Xác thực chữ ký từ cổng thanh toán (nếu có)
+    const isValidSignature = validateSignature(req.body, process.env.SECRET_KEY);
+    if (!isValidSignature) {
+      return res.status(400).json({ message: 'Invalid signature.' });
+    }
+
+    // Cập nhật trạng thái thanh toán
+    if (paymentStatus === 'success') {
+      bill.paymentStatus = 'paid';
+      bill.paymentTimestamp = paymentTimestamp || new Date();
+      bill.transactionDetails = 'Payment completed successfully.';
+    } else {
+      bill.paymentStatus = 'failed';
+      bill.transactionDetails = 'Payment failed or was canceled.';
+    }
+
+    // Lưu thay đổi vào database
+    await bill.save();
+
+    // Phản hồi thành công cho cổng thanh toán
+    res.status(200).json({
+      message: 'Payment status updated successfully.',
+      bill,
+    });
+  } catch (error) {
+    console.error('Error handling payment:', error);
+    res.status(500).json({ message: 'Internal server error.', error: error.message });
+  }
+};
+
+
+
+// Hàm xác thực chữ ký (để tránh bị giả mạo)
+const validateSignature = (data, signature) => {
+  const signString = `${data.partnerCode}|${data.accessKey}|${data.requestId}|${data.amount}|${data.orderId}|${data.orderInfo}|${data.returnUrl}|${data.notifyUrl}`;
+  const hash = crypto.createHmac('sha256', data.secretKey).update(signString).digest('hex');
+  return hash === signature;
+};
+
+
+
+// Hàm xử lý thông báo IPN từ MoMo
+export const ipnCallback = async (req, res) => {
+  const { transactionId, orderId, paymentStatus, message, signature } = req.body;
+
+  // Kiểm tra các tham số bắt buộc
+  if (!transactionId || !orderId || !paymentStatus) {
+    return res.status(400).json({ message: 'Missing required parameters in IPN callback.' });
+  }
+
+  try {
+    // Kiểm tra tính hợp lệ của chữ ký (signature)
+    const isValidSignature = validateSignature(req.body, signature);
+    if (!isValidSignature) {
+      return res.status(400).json({ message: 'Invalid signature.' });
+    }
+
+    // Xử lý thông báo IPN từ MoMo
+    if (paymentStatus === 'success') {
+      // Cập nhật trạng thái thanh toán trong database (bạn cần tìm và cập nhật hóa đơn theo transactionId)
+      const bill = await Bill.findOne({ transactionId });
+
+      if (!bill) {
+        return res.status(404).json({ message: 'Bill not found for transaction ID.' });
+      }
+
+      // Cập nhật trạng thái thanh toán thành công
+      bill.paymentStatus = 'paid';
+      await bill.save();
+
+      // Phản hồi thành công
+      res.status(200).json({
+        message: 'Payment successfully processed through IPN.',
+        bill: bill,
+      });
+    } else {
+      // Trường hợp thanh toán thất bại
+      res.status(400).json({
+        message: 'Payment failed through IPN.',
+        transactionId: transactionId,
+      });
+    }
+  } catch (error) {
+    console.error('Error processing IPN callback:', error);
+    res.status(500).json({ message: 'Internal server error', error: error.message });
+  }
+};
 
 
 // Cập nhật hóa đơn

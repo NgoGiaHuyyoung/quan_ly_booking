@@ -13,3 +13,67 @@
 2024-12-27T00:34:27.917Z [ERROR] : Error creating log: req.get is not a function
 2024-12-27T00:34:28.965Z [ERROR] : Error creating log: req.get is not a function
 2024-12-27T00:34:37.426Z [ERROR] : Error creating log: req.get is not a function
+2024-12-31T01:34:25.053Z [ERROR] : Error creating bill or processing payment: Bill validation failed: status: `Unpaid` is not a valid enum value for path `status`.
+2024-12-31T01:36:01.317Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV113226" }
+2024-12-31T01:36:32.330Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV113226" }
+2024-12-31T01:36:33.370Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV113226" }
+2024-12-31T01:36:56.415Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T01:36:57.679Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV113221" }
+2024-12-31T01:37:05.282Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV113221" }
+2024-12-31T01:37:47.639Z [ERROR] : Error creating bill or processing payment: Bill validation failed: status: `pending` is not a valid enum value for path `status`.
+2024-12-31T01:37:49.163Z [ERROR] : Error creating bill or processing payment: Bill validation failed: status: `pending` is not a valid enum value for path `status`.
+2024-12-31T01:38:00.721Z [ERROR] : Error creating bill or processing payment: Bill validation failed: status: `pending` is not a valid enum value for path `status`.
+2024-12-31T01:38:02.058Z [ERROR] : Error creating bill or processing payment: Bill validation failed: status: `pending` is not a valid enum value for path `status`.
+2024-12-31T01:39:35.722Z [ERROR] : Error creating bill or processing payment: Bill validation failed: status: `pending` is not a valid enum value for path `status`.
+2024-12-31T01:39:36.656Z [ERROR] : Error creating bill or processing payment: Bill validation failed: status: `pending` is not a valid enum value for path `status`.
+2024-12-31T01:39:37.527Z [ERROR] : Error creating bill or processing payment: Bill validation failed: status: `pending` is not a valid enum value for path `status`.
+2024-12-31T01:41:25.048Z [ERROR] : Error creating bill or processing payment: Bill validation failed: status: `pending` is not a valid enum value for path `status`.
+2024-12-31T01:42:10.752Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T01:42:11.729Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240101" }
+2024-12-31T01:42:12.841Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240101" }
+2024-12-31T01:42:13.863Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240101" }
+2024-12-31T01:44:57.783Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240101" }
+2024-12-31T01:44:59.607Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240101" }
+2024-12-31T17:20:48.048Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240101" }
+2024-12-31T17:20:49.673Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240101" }
+2024-12-31T17:24:07.836Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T17:24:09.305Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240111" }
+2024-12-31T17:24:12.422Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240111" }
+2024-12-31T17:24:44.401Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T17:24:45.769Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240999" }
+2024-12-31T17:24:47.456Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240999" }
+2024-12-31T17:25:54.119Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240999" }
+2024-12-31T17:26:10.042Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240999" }
+2024-12-31T17:26:11.261Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240999" }
+2024-12-31T17:27:12.290Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240999" }
+2024-12-31T17:27:13.942Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240999" }
+2024-12-31T17:27:16.872Z [ERROR] : Error creating bill or processing payment: E11000 duplicate key error collection: hotel-management.bills index: invoiceNumber_1 dup key: { invoiceNumber: "INV20240999" }
+2024-12-31T17:34:38.050Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T19:44:20.956Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T19:44:23.065Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T19:44:37.151Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T19:58:37.267Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:06:28.101Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:39:40.478Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:41:06.515Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:41:08.376Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:42:06.334Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:42:50.295Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:42:59.630Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:44:21.886Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:44:23.077Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:46:42.006Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:49:12.316Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:49:22.682Z [ERROR] : Error creating bill or processing payment: Request failed with status code 404
+2024-12-31T20:55:59.375Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T20:57:42.077Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T20:57:43.326Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T20:57:49.438Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T20:58:41.246Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T20:58:42.249Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T20:58:43.154Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T21:05:22.306Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T21:11:50.594Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T21:11:51.636Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T21:12:04.626Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400
+2024-12-31T21:19:49.419Z [ERROR] : Error creating bill or processing payment: Request failed with status code 400

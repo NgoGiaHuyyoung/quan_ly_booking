@@ -19,6 +19,6 @@ router.post('/add', verifyToken, addToCart);
 router.put('/update', verifyToken, updateCart);
 
 // Xóa sản phẩm khỏi giỏ hàng
-router.delete('/remove', verifyToken, removeFromCart);
+router.delete('/:itemId', verifyToken, removeFromCart);
 
 export default router;

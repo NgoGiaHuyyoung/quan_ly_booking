@@ -48,7 +48,6 @@ if (isset($_SESSION['username'])) {
             </div>
             <button type="submit" class="btn btn-dark">Save Profile to Session</button>
         </form>
-        
         <div id="profileOutput" class="mt-4">
             <h3 class="text-center">Saved Profile</h3>
             <ul class="list-group">

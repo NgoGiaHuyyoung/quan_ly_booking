@@ -119,27 +119,49 @@ export const updateCart = async (req, res) => {
   }
 };
 
+
+
+
+
+
+// Xóa sản phẩm khỏi giỏ hàng
 // Xóa sản phẩm khỏi giỏ hàng
 export const removeFromCart = async (req, res) => {
-  const { type, itemId } = req.body;
+  const { itemId } = req.params;  // itemId từ URL
   try {
-    const customerId = req.user.id;
-    const cart = await Cart.findOne({ customer: customerId });
+    const customerId = req.user.id;  // Lấy id người dùng từ token hoặc session
+    const cart = await Cart.findOne({ customer: customerId });  // Tìm giỏ hàng của người dùng
+    
     if (!cart) {
       return res.status(404).json({ message: 'Giỏ hàng không tồn tại' });
     }
 
-    cart.items = cart.items.filter(
-      (item) => !(item.itemId.toString() === itemId && item.type === type)
-    );
+    // Tìm sản phẩm trong giỏ hàng sử dụng itemId (đây là tham số từ client)
+    const item = cart.items.find((item) => item.itemId.toString() === itemId); // itemId từ URL
+    
+    if (!item) {
+      return res.status(404).json({ message: 'Sản phẩm không tồn tại trong giỏ hàng' });
+    }
 
-    // Cập nhật tổng giá
+    // Tìm chỉ mục của sản phẩm để xóa
+    const itemIndex = cart.items.findIndex((item) => item.itemId.toString() === itemId);
+    if (itemIndex === -1) {
+      return res.status(404).json({ message: 'Sản phẩm không tồn tại trong giỏ hàng' });
+    }
+
+    // Xóa sản phẩm khỏi giỏ hàng
+    cart.items.splice(itemIndex, 1);
+
+    // Cập nhật lại tổng giá trị giỏ hàng
     cart.totalPrice = cart.items.reduce(
       (total, item) => total + item.details.price * item.quantity,
       0
     );
 
+    // Lưu lại giỏ hàng đã cập nhật
     await cart.save();
+
+    // Trả về giỏ hàng sau khi xóa sản phẩm
     res.json(cart);
   } catch (error) {
     res.status(500).json({ message: error.message });

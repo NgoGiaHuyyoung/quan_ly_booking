@@ -17,40 +17,43 @@ const billSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
+    default: 'No description provided', // Mặc định nếu không có description
   },
   paymentDate: {
     type: Date,
     required: true,
+    default: Date.now, // Mặc định nếu không có paymentDate
   },
   status: {
     type: String,
-    enum: ['paid', 'unpaid', 'refunded'],
+    enum: ['paid', 'unpaid', 'refunded', 'pending'],
     default: 'unpaid',
   },
-  services: {
-    type: [String],
-    default: [],
-  },
-  // Các trường mới cho thanh toán MoMo
+  services:  [
+    {
+      name: { type: String, required: true },
+      price: { type: Number, required: true },
+    },
+  ],
   transactionId: {
-    type: String,  // Mã giao dịch từ MoMo
+    type: String,
     default: null,
   },
   paymentMethod: {
-    type: String,  // Phương thức thanh toán (ví dụ: MoMo, thẻ tín dụng)
-    default: 'MoMo',
+    type: String,
+    default: 'cod', // Mặc định phương thức thanh toán là COD
   },
   paymentStatus: {
-    type: String,  // Trạng thái thanh toán (thành công, thất bại)
+    type: String,
     enum: ['success', 'failed', 'pending'],
     default: 'pending',
   },
   paymentTimestamp: {
-    type: Date,  // Thời gian thanh toán
+    type: Date,
     default: null,
   },
   transactionDetails: {
-    type: mongoose.Schema.Types.Mixed,  // Chi tiết giao dịch nếu cần
+    type: mongoose.Schema.Types.Mixed,
     default: null,
   },
 });
